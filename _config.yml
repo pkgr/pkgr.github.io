@@ -19,7 +19,7 @@ collections:
     categories:
       - reference
       - guides
-markdown: HTMLPipeline
+markdown: redcarpet
 html_pipeline:
   filters:
     - "markdownfilter"

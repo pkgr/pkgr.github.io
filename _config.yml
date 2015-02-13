@@ -25,6 +25,7 @@ html_pipeline:
     # - "sanitizationfilter"
     - "ExtendedMarkdownFilter"
     - "imagemaxwidthfilter"
+    - "AddCssClassToTableFilter"
     - "tableofcontentsfilter"
     - "syntaxhighlightfilter"
     - "autolinkfilter"

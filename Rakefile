@@ -11,7 +11,7 @@ task :release => :build do
     sh "rm -rf ./*"
     sh "cp -r #{dir}/* ."
   end
-  sh "git add . && git commit -am 'Update doc' && git push origin gh-pages"
+  sh "git add . && if ! git diff --staged --exit-code ; then git commit -am 'Update doc' && git push origin gh-pages ; fi"
   sh "git checkout master"
 end
 

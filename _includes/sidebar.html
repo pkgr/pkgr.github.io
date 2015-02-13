@@ -1,0 +1,14 @@
+<div class="page-sidebar">
+  <ul>
+    {% for category in site.collections.articles.categories %}
+      <li><h3>{{ category }}</h3></li>
+      <ul>
+      {% for article in site.collections.articles.docs %}
+        {% if article.categories contains category %}
+          <li><a href="{{ article.url }}">{{ article.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+    {% endfor %}
+  </ul>
+</div>

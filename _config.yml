@@ -15,7 +15,7 @@ markdown: kramdown
 collections:
   articles:
     output: true
-    permalink: /articles/:path/index.html
+    permalink: /help/:path/index.html
     categories:
       - reference
       - guides

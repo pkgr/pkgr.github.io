@@ -14,6 +14,7 @@ task :release => :build do
   sh "git add ."
   sh "git commit -am 'Update doc'"
   sh "git push origin gh-pages"
+  sh "git checkout master"
 end
 
 task default: :build

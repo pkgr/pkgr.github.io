@@ -114,5 +114,6 @@ DEPENDENCIES
   jekyll
   jekyll-html-pipeline
   pygments.rb
+  redcarpet
   rinku
   sanitize

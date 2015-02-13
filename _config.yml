@@ -37,6 +37,7 @@ gems:
   - jekyll-html-pipeline
   - sanitize
   - pygments.rb
+  - redcarpet
   # - extended-markdown-filter
   # - github-linguist
   # - github-markdown

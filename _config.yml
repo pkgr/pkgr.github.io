@@ -20,4 +20,23 @@ collections:
     categories:
       - reference
       - guides
-
+markdown: HTMLPipeline
+html_pipeline:
+  filters:
+    - "markdownfilter"
+    - "sanitizationfilter"
+    - "imagemaxwidthfilter"
+    - "tableofcontentsfilter"
+    - "syntaxhighlightfilter"
+    # - "extendedmarkdownfilter"
+    - "autolinkfilter"
+redcarpet:
+  extensions:
+  - fenced_code_blocks
+gems:
+  - jekyll-html-pipeline
+  - sanitize
+  - pygments.rb
+  # - extended-markdown-filter
+  # - github-linguist
+  # - github-markdown

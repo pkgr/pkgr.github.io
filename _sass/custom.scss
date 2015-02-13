@@ -1,0 +1,282 @@
+#menu {
+  background-color: #e0effa;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+  max-width: 960px;
+}
+
+#main .pure-menu li a {
+  white-space: normal;
+}
+    .pure-g > div {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .l-box {
+        padding: 1em;
+    }
+body {
+  color: #777;
+  line-height: 1.6;
+}
+html, button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+    /* Set your content font stack here: */
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+/* --------------------------
+ * Code Styles
+ * --------------------------
+*/
+//
+// pre,
+// code {
+//     font-family: Consolas, Courier, monospace;
+//     color: #333;
+//     background: rgb(250, 250, 250);
+// }
+//
+pre {
+  // padding: 5px 10px;
+}
+
+code {
+    padding: 0.2em 0.4em;
+    white-space: nowrap;
+}
+p code {
+    font-size: 90%;
+}
+
+.highlight {
+    margin-left: -1em;
+    margin-right: -1em;
+    padding: 1em;
+    border: 1px solid #eee;
+    border-left-width: 0;
+    border-right-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.highlight code {
+    font-size: 95%;
+    white-space: pre;
+    word-wrap: normal;
+    padding: 0;
+    background: none;
+}
+// .code-wrap code {
+//     white-space: pre-wrap;
+//     word-wrap: break-word;
+// }
+
+
+
+/* --------------------------
+ * Responsive Styles
+ * --------------------------
+*/
+
+@media screen and (min-width: 35.5em) {
+
+    .legal-license {
+        text-align: left;
+        margin: 0;
+    }
+    .legal-copyright,
+    .legal-links,
+    .legal-links li {
+        text-align: right;
+        margin: 0;
+    }
+
+}
+
+@media screen and (min-width: 48em) {
+
+    .l-wrap,
+    .l-wrap .content {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+    .content .l-wrap {
+        margin-left: -2em;
+        margin-right: -2em;
+    }
+
+    .header,
+    .content {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    .header h1 {
+        font-size: 320%;
+    }
+    .header h2 {
+        font-size: 128%;
+    }
+
+    .content p {
+        font-size: 1.125em;
+    }
+
+    .code {
+        margin-left: auto;
+        margin-right: auto;
+        border-left-width: 1px;
+        border-right-width: 1px;
+    }
+
+    .table-responsive {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .table-responsive table {
+        border-left-width: 1px;
+        border-right-width: 1px;
+    }
+
+}
+
+
+.pure-button {
+    font-family: inherit;
+}
+a.pure-button-primary {
+    color: white;
+}
+
+
+/* green call to action button class */
+.notice {
+    background-color: #61B842;
+    color: white;
+}
+
+.muted {
+    color: #ccc;
+}
+
+
+/* --------------------------
+ * Footer Module Styles
+ * --------------------------
+*/
+
+.footer {
+    font-size: 87.5%;
+    border-top: 1px solid #eee;
+    margin-top: 3.4286em;
+    padding: 1.1429em;
+    background: rgb(250, 250, 250);
+}
+
+.legal {
+    line-height: 1.6;
+    text-align: center;
+    margin: 0 auto;
+}
+
+    .legal-license {
+        margin-top: 0;
+    }
+    .legal-links {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 0;
+    }
+    .legal-copyright {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+
+/* --------------------------
+ * Header Module Styles
+ * --------------------------
+*/
+
+.header {
+    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 1em;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+    letter-spacing: 0.05em;
+}
+    .header h1 {
+        font-size: 300%;
+        font-weight: 100;
+        margin: 0;
+    }
+     .header h2 {
+        font-size: 125%;
+        font-weight: 100;
+        line-height: 1.5;
+        margin: 0;
+        color: #666;
+        letter-spacing: -0.02em;
+    }
+
+ /* --------------------------
+  * Content Module Styles
+  * --------------------------
+ */
+
+/* The content div is placed as a wrapper around all the docs */
+.content {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+    max-width: 768px;
+}
+
+    .content .content-subhead {
+        margin: 2em 0 1em 0;
+        font-weight: 300;
+        color: #888;
+        position: relative;
+    }
+
+    .content .content-spaced {
+        line-height: 1.8;
+    }
+
+    .content .content-quote {
+        font-family: "Georgia", serif;
+        color: #666;
+        font-style: italic;
+        line-height: 1.8;
+        border-left: 5px solid #ddd;
+        padding-left: 1.5em;
+    }
+
+    .content-link {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        height: 100%;
+        width: 20px;
+        background: transparent url('/img/link-icon.png') no-repeat center center;
+        background-size: 20px 20px;
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+        .content-link {
+            background-image: url('/img/link-icon@2x.png');
+        }
+    }

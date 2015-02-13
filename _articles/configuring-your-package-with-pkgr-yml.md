@@ -1,8 +1,9 @@
 ---
 title: Configure your package with the .pkgr.yml file
-layout: post
+layout: doc
 categories:
   - reference
+  - guides
 ---
 
 # Here is how to do it

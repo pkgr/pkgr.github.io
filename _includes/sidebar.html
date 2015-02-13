@@ -5,7 +5,7 @@
     <ul>
     {% for article in site.collections.articles.docs %}
     {% if article.categories contains category %}
-      <li><a href="{{ article.url }}">{{ article.title }}</a></li>
+      <li><a href="{{ article.url | prepend: site.baseurl }}">{{ article.title }}</a></li>
     {% endif %}
     {% endfor %}
     </ul>

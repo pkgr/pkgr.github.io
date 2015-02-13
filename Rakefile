@@ -9,7 +9,7 @@ task :release => :build do
   Dir.mktmpdir do |dir|
     sh "cp -r _site #{dir}"
     sh "rm -rf ./*"
-    sh "cp -r #{dir}/* ."
+    sh "cp -r #{dir}/* documentation"
   end
   sh "git add . && if ! git diff --staged --exit-code ; then git commit -am 'Update doc' && git push origin gh-pages ; fi"
   sh "git checkout master"

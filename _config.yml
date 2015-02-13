@@ -16,7 +16,6 @@ collections:
   articles:
     output: true
     permalink: /articles/:path/index.html
-    yoh: yeah
     categories:
       - reference
       - guides
@@ -39,5 +38,5 @@ gems:
   - pygments.rb
   - redcarpet
   # - extended-markdown-filter
-  # - github-linguist
-  # - github-markdown
+  - linguist
+  - github/markdown

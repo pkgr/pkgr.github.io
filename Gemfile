@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'github-markdown'
+gem 'github-markdown', require: 'github/markdown'
 gem 'jekyll'
 gem 'sanitize'
 gem 'github-linguist', require: 'linguist'

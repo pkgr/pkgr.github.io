@@ -10,6 +10,10 @@
   max-width: 960px;
 }
 
+#sidebar .pure-menu {
+  font-size: 14px;
+}
+
 #main .pure-menu li a {
   white-space: normal;
 }
@@ -53,7 +57,7 @@ code {
     padding: 0.2em 0.4em;
     white-space: nowrap;
 }
-p code {
+.content p code {
     font-size: 90%;
 }
 
@@ -67,7 +71,7 @@ p code {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
-.highlight code {
+.highlight > pre {
     font-size: 95%;
     white-space: pre;
     word-wrap: normal;

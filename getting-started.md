@@ -1,6 +1,6 @@
 ---
 layout: page
-scope: articles
+selected: true
 title: Documentation
 ---
 

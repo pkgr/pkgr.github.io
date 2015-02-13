@@ -52,6 +52,9 @@ GEM
       redcarpet (~> 3.1)
       safe_yaml (~> 1.0)
       toml (~> 0.1.0)
+    jekyll-autolink_email (0.0.2)
+      jekyll (~> 2.0)
+      rinku (~> 1.7.0)
     jekyll-coffeescript (1.0.1)
       coffee-script (~> 2.2)
     jekyll-gist (1.1.0)
@@ -112,6 +115,7 @@ DEPENDENCIES
   github-linguist
   github-markdown
   jekyll
+  jekyll-autolink_email
   jekyll-html-pipeline
   pygments.rb
   redcarpet

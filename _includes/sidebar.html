@@ -3,9 +3,12 @@
   {% for category in site.collections.articles.categories %}
     <a class="pure-menu-heading">{{ category }}</a>
     <ul>
-    {% for article in site.collections.articles.docs %}
+    {% assign articles =  site.collections.articles.docs | sort: 'order' %}
+    {% for article in articles %}
     {% if article.categories contains category %}
-      <li><a href="{{ article.url | prepend: site.baseurl }}">{{ article.title }}</a></li>
+      <li class="{% if page.url contains article.permalink %}pure-menu-selected{% endif %}">
+        <a href="{{ article.url | prepend: site.baseurl }}">{{ article.title }}</a>
+      </li>
     {% endif %}
     {% endfor %}
     </ul>

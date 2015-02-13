@@ -14,6 +14,7 @@ collections:
     output: true
     permalink: /:path/index.html
     categories:
+      - getting-started
       - reference
       - guides
 
@@ -21,21 +22,34 @@ collections:
 markdown: HTMLPipeline
 html_pipeline:
   filters:
-    - "markdownfilter"
-    - "sanitizationfilter"
+    # - "sanitizationfilter"
+    - "ExtendedMarkdownFilter"
     - "imagemaxwidthfilter"
     - "tableofcontentsfilter"
     - "syntaxhighlightfilter"
-    # - "extendedmarkdownfilter"
     - "autolinkfilter"
+  context:
+    emf_use_blocks: true
 redcarpet:
   extensions:
   - fenced_code_blocks
+defaults:
+- scope:
+    path: ''
+    type: posts
+  values:
+    layout: post
+- scope:
+    path: ''
+    type: articles
+  values:
+    layout: doc
 gems:
   - jekyll-html-pipeline
   - sanitize
   - pygments.rb
   - redcarpet
-  # - extended-markdown-filter
+  - extended-markdown-filter
   - linguist
   - github/markdown
+  - jekyll-autolink_email

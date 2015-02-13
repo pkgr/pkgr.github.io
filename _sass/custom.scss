@@ -1,5 +1,4 @@
 #menu {
-  background-color: #e0effa;
 }
 
 .container {
@@ -8,6 +7,11 @@
   padding-left: 1em;
   padding-right: 1em;
   max-width: 960px;
+  max-width: 1170px;
+}
+
+.content .intro {
+  color: #999;
 }
 
 #sidebar .pure-menu {
@@ -26,8 +30,9 @@
         padding: 1em;
     }
 body {
-  color: #777;
+  color: #0b0c0c;
   line-height: 1.6;
+  font-weight: 100;
 }
 html, button, input, select, textarea,
 .pure-g [class *= "pure-u"] {
@@ -37,31 +42,60 @@ html, button, input, select, textarea,
     font-weight: 100;
 }
 
+a {
+  color: $link-color;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #4c2c92;
+}
+
+a:hover {
+  color: #2e8aca;
+}
+.pure-menu a, .pure-menu .pure-menu-can-have-children > li:after {
+  color: $link-color;
+}
+/* --------------------------
+ * Alerts
+ * --------------------------
+*/
+
+.alert {
+  font-size: 14px;
+  padding: 0.3em 1em;
+  border-radius: 3px;
+}
+.alert.tip {
+  background: #1f8dd6;
+  color: #fff;
+  background-color: #d8ebf8;
+  color: #264c72;
+}
+.alert.warning {
+  background: #ffe3c8;
+  color: #613A00;
+}
+
 /* --------------------------
  * Code Styles
  * --------------------------
 */
-//
-// pre,
-// code {
-//     font-family: Consolas, Courier, monospace;
-//     color: #333;
-//     background: rgb(250, 250, 250);
-// }
-//
-pre {
-  // padding: 5px 10px;
-}
-
 code {
-    padding: 0.2em 0.4em;
-    white-space: nowrap;
-}
-.content p code {
-    font-size: 90%;
+  font-family: Consolas, Courier, monospace;
 }
 
-.highlight {
+.content p code {
+  font-size: 90%;
+  color: #000;
+  background: rgb(240, 240, 240);
+  padding: 0.2em 0.4em;
+  white-space: nowrap;
+}
+
+.highlight, pre.command-line { background-color: #002b36; color: #93a1a1 }
+.highlight, pre.command-line {
     margin-left: -1em;
     margin-right: -1em;
     padding: 1em;
@@ -70,13 +104,35 @@ code {
     border-right-width: 0;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    font-size: 80%;
 }
 .highlight > pre {
-    font-size: 95%;
     white-space: pre;
     word-wrap: normal;
     padding: 0;
+    margin: 0;
     background: none;
+}
+
+pre.command-line {
+    white-space: pre;
+    word-wrap: normal;
+}
+
+pre.command-line .command:before {
+  content: "$ ";
+}
+pre.command-line em {
+  color: #F9FE64;
+  font-style: italic;
+}
+pre.command-line .output {
+  color: #63E463;
+}
+pre.command-line .output span {
+  position: fixed;
+  top: -1000px;
+  left: -1000px;
 }
 // .code-wrap code {
 //     white-space: pre-wrap;
@@ -221,7 +277,7 @@ a.pure-button-primary {
     letter-spacing: 0.05em;
 }
     .header h1 {
-        font-size: 300%;
+        font-size: 250%;
         font-weight: 100;
         margin: 0;
     }

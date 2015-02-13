@@ -27,6 +27,7 @@ $content-width:    800px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
+$link-color:      rgb(0, 94, 165);
 
 
 // Using media queries with like this:
@@ -47,9 +48,10 @@ $on-laptop:        800px;
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
         "pure",
-        "pure-skin",
+        // "pure-skin",
         "custom",
-        "highlighting"
+        "highlighting",
+        "packager"
         // "layout",
         // "syntax-highlighting"
 ;

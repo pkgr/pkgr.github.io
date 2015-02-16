@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Process types</title>
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+  <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
+  <link rel="stylesheet" href="/static/css/main.css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:200,400">
+  <link rel="canonical" href="https://packager.io/procfile/">
+  <!-- <link rel="alternate" type="application/rss+xml" title="Help" href="https://packager.io/blog/feed.xml" /> -->
+</head>
+
+
+  <body class="pure-skin-pkgr">
+
+    <div id="menu">
+  <div class="container">
+    <div class="pure-menu pure-menu-open pure-menu-horizontal">
+      <a href="/" class="pure-menu-heading"><img alt="Packager" class="logo" src="/static/img/packager.svg"></a>
+      <ul>
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="http://blog.packager.io">Blog</a></li>
+        
+          
+        
+          
+          <li class=" pure-menu-selected "><a href="/getting-started.html">Documentation</a></li>
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+    <div id="main">
+      <div class="container">
+  <div class="pure-g">
+    <div class="pure-u-1-4 l-box">
+      <div id="sidebar">
+  <div class="pure-menu pure-menu-open">
+  
+    <a class="pure-menu-heading">getting-started</a>
+    <ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/register/">Register with your GitHub account</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/enable-application-for-packaging/">Enable application for packaging</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/launch-build/">Launch your first build</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/install-configure-run-package/">Install, configure, and run your packaged application</a>
+      </li>
+    
+    
+    </ul>
+  
+    <a class="pure-menu-heading">reference</a>
+    <ul>
+    
+    
+    
+      <li class="">
+        <a href="/help/customizing-the-build/index.html">Customizing the build</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/buildpacks/">Buildpacks</a>
+      </li>
+    
+    
+    
+    
+    
+      <li class="pure-menu-selected">
+        <a href="/procfile/">Process types</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+  
+    <a class="pure-menu-heading">guides</a>
+    <ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+  
+  </div>
+</div>
+
+    </div>
+    <div class="pure-u-3-4 l-box">
+      <div class="header">
+        <h1>Process types</h1>
+        
+      </div>
+      <div class="content"> 
+        
+
+<h2>
+<a id="process-types-and-the-procfile" class="anchor" href="#process-types-and-the-procfile" aria-hidden="true"><span class="octicon octicon-link"></span></a>Process types and the Procfile</h2>
+
+<div class="intro">
+
+<p>Procfiles were introduced by Heroku as a mechanism for declaring what commands are run by your application. See <a href="https://devcenter.heroku.com/articles/procfile">this link</a> for more details.</p>
+
+</div>
+
+<p>Process types are declared in a specific file named <code>Procfile</code>. It comes from the Heroku way of doing things, and is a simple text-based file spercifying a mapping between process names, and how those process are launched.</p>
+
+<p>For instance, most web applications have at least a <code>web</code> process, which is usually a server daemon being able to serve HTTP requests for the application. Applications may also have a <code>worker</code> process, which is used to run background job processors, such as <a href="http://sidekiq.org/">Sidekiq</a> or <a href="https://github.com/resque/resque">Resque</a> in the Ruby world.</p>
+
+<p>Process names can be arbitrary, although it is expected that the <code>web</code> process specifies the main process of your application.</p>
+
+<h2>
+<a id="launching-processes" class="anchor" href="#launching-processes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Launching processes</h2>
+
+<p>Any process declared in the <code>Procfile</code> can be launched using the <a href="../command-line-tool">dedicated command line tool</a> that comes with each package. For instance, assuming you have declared the following <code>Procfile</code>:</p>
+
+<div class="highlight highlight-bash"><pre>web: bundle <span class="nb">exec </span>rails s -p <span class="nv">$PORT</span>
+worker: bundle <span class="nb">exec </span>sidekiq
+</pre></div>
+
+<p>You would be able to launch any of the <code>web</code> or <code>worker</code> processes in two way:</p>
+
+<h3>
+<a id="1-as-a-foreground-process" class="anchor" href="#1-as-a-foreground-process" aria-hidden="true"><span class="octicon octicon-link"></span></a>1) As a foreground process</h3>
+
+<pre class="command-line">
+<span class="command">sudo my-app run web</span>
+</pre>
+
+<p>To quit the process, you would hit CTRL-C.</p>
+
+<h3>
+<a id="2-as-a-daemonized-process" class="anchor" href="#2-as-a-daemonized-process" aria-hidden="true"><span class="octicon octicon-link"></span></a>2) As a daemonized process</h3>
+
+<pre class="command-line">
+<span class="command">sudo my-app scale web=1</span>
+</pre>
+
+<p>Using the <code>scale</code> command will register the process with your init system.</p>
+
+<p>As such, to manage the process, you would then use the <code>service</code> utility from your system:</p>
+
+<pre class="command-line">
+<span class="command">sudo service my-app-web stop|start|restart|status</span>
+</pre>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    
+
+  </body>
+
+</html>

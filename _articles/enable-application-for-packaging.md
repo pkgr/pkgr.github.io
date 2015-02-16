@@ -1,6 +1,5 @@
 ---
 title: Enable application for packaging
-permalink: enable-application-for-packaging/
 order: 2
 categories:
   - getting-started

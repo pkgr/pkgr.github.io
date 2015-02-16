@@ -6,7 +6,7 @@
     {% assign articles =  site.collections.articles.docs | sort: 'order' %}
     {% for article in articles %}
     {% if article.categories contains category %}
-      <li class="{% if page.url contains article.permalink %}pure-menu-selected{% endif %}">
+      <li class="{% if page.url contains article.url %}pure-menu-selected{% endif %}">
         <a href="{{ article.url | prepend: site.baseurl }}">{{ article.title }}</a>
       </li>
     {% endif %}

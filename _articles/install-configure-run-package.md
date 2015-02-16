@@ -3,7 +3,6 @@ title: Install, configure, and run your packaged application
 categories:
   - getting-started
 order: 4
-permalink: install-configure-run-package/
 ---
 
 If the packaging [build process][build] successfully completed, you'll be able to see the Installation page, with instructions on how to deploy your application using `apt`, `yum` or `zypper`, depending on the distributions you've targeted.

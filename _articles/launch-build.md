@@ -3,7 +3,6 @@ title:    Launch your first build
 order: 3
 categories:
   - getting-started
-permalink: launch-build/
 ---
 
 Now that you've [enabled an application][enable-application], you will be greeted with a screen similar to the one below:

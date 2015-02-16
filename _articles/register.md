@@ -1,7 +1,6 @@
 ---
 title: Register with your GitHub account
 order: 1
-permalink: register/
 categories:
   - getting-started
 ---

@@ -5,14 +5,14 @@ task :build do
 end
 
 task :release => :build do
-  sh "git checkout gh-pages"
+  sh "git checkout master"
   Dir.mktmpdir do |dir|
     sh "cp -r _site #{dir}"
     sh "rm -rf ./*"
     sh "cp -r #{dir}/_site/* ."
   end
-  sh "git add . --all && if ! git diff --staged --exit-code ; then git commit -am 'Update doc' && git push origin gh-pages ; fi"
-  sh "git checkout master"
+  sh "git add . --all && if ! git diff --staged --exit-code ; then git commit -am 'Update doc' && git push origin master ; fi"
+  sh "git checkout source"
 end
 
 task default: :build

@@ -5,11 +5,7 @@
       <ul>
         <li><a href="/pricing">Pricing</a></li>
         <li><a href="http://blog.packager.io">Blog</a></li>
-        {% for nav_page in site.pages %}
-          {% if nav_page.title %}
-          <li class="{% if nav_page.selected %} pure-menu-selected {% endif %}"><a href="{{ nav_page.url | prepend: site.baseurl }}">{{ nav_page.title }}</a></li>
-          {% endif %}
-        {% endfor %}
+        <li><a href="/help">Help</a></li>
       </ul>
     </div>
   </div>

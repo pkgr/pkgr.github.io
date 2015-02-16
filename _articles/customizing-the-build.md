@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: Customizing the build
+title: Customizing the build (.pkgr.yml)
 subtitle: Everything you need to know about the .pkgr.yml file
 categories:
   - reference
@@ -13,6 +13,57 @@ categories:
 {{/intro}}
 
 You'll find all the available options explained below.
+
+## `targets`
+
+Use this option to specify which distributions to target. Each target accepts a YAML hash of options, which will overwrite any other option defined for all distributions.
+
+{{#tip}}
+
+The list of available target distributions are:
+
+* `ubuntu-14.04` - for Ubuntu Trusty (14.04)
+* `ubuntu-12.04` - for Ubuntu Precise (12.04)
+* `debian-7` - for Debian Wheezy (7.4)
+* `centos-6` - for CentOS 6.x
+* `fedora-20` - for Fedora 20
+* `sles-12` - for Suse Linux Enterprise Server 12
+
+By default, package will be built for `ubuntu-14.04`, `centos-6`, and `debian-7`.
+
+{{/tip}}
+
+Use the distribution name as a key to the `targets` hash, as follows:
+
+```yaml
+dependencies:
+  - default-dependency-1
+  - default-dependency-2
+targets:
+  ubuntu-12.04:
+    # overwrite dependencies obly for ubuntu-12.04
+    dependencies:
+      - other-dependency-1
+      - other-dependency-2
+  ubuntu-14.04:
+  debian-7:
+```
+
+If you just want to enable a target without any additional option, you can do as follows:
+
+```yaml
+targets:
+  ubuntu-14.04:
+  centos-6:
+```
+
+## `buildpack`
+
+You can find the list of officially supported buildpacks at [buildpack][buildpacks]. If you want to pass a custom buildpack to package your application, you can do so with the `buildpack` configuration option. Though we can not ensure that the resulting package will work. Please do contact us if you run into any issue.
+
+```yaml
+buildpack: https://github.com/heroku/some-buildpack#branch
+```
 
 ## `build_dependencies`
 
@@ -38,14 +89,6 @@ dependencies:
   - git-core
 ```
 
-## `group`
-
-The name of the group under which your app processes will be run. If this group does not exist on the target machine, then it will be automatically created. Defaults to `user`.
-
-```yaml
-group: "custom-group-name"
-```
-
 ## `user`
 
 The name of the user under which your app processes will be run. If this user does not exist on the target machine, then it will be automatically created. Defaults to your application `name` (taken from Github, which can be overwritten in the app settings).
@@ -54,12 +97,40 @@ The name of the user under which your app processes will be run. If this user do
 user: "custom-user-name"
 ```
 
+## `group`
+
+The name of the group under which your app processes will be run. If this group does not exist on the target machine, then it will be automatically created. Defaults to `user`.
+
+```yaml
+group: "custom-group-name"
+```
+
 ## `before_precompile`
+
+{{#warning}}
+
+This option is deprecated. You should use the `before` option.
+
+{{/warning}}
 
 In the case of complex apps, you might need to do a bit of housekeeping before the packaging process can start. This can include creating files or folders that should be present for running the app (but not necessarily checked into the repository). In that case, you can add a bash script anywhere in your repository that does just that, and reference it with the `before_precompile` configuration option:
 
 ```yaml
 before_precompile: "packaging/debian/setup.sh"
+```
+
+## `after_precompile`
+
+{{#warning}}
+
+This option is deprecated. You should use the `after` option.
+
+{{/warning}}
+
+If you need to run a task after the buildpack compilation step is finished, you can provide a path to a file to execute:
+
+```yaml
+after_precompile: path/to/file.sh
 ```
 
 ## `before`
@@ -68,25 +139,22 @@ Replacement for `before_precompile`, which instead of pointing to a file, must b
 
 ```yaml
 before:
-  - sudo service postgresql start
   - mv some/file to/path
 ```
 
 Note that `before_precompile` takes precedence over `before` if both are specified.
-
-## `after_precompile`
-
-If you need to run a task after the buildpack compilation step is finished, you can provide a path to a file to execute:
-
-```yaml
-after_precompile: path/to/file.sh
-```
 
 ## `after`
 
 Replacement for `after_precompile`, which instead of pointing to a file, must be an array of commands to execute after the buildpack compilation step is finished.
 
 Note that `after_precompile` takes precedence over `after` if both are specified.
+
+```yaml
+after:
+  - cp some/file target
+  - rm -rf some/dir
+```
 
 ## `before_install`
 
@@ -107,36 +175,6 @@ after_install: "packaging/debian/postinstall.sh"
 ```
 
 The file will be called with the arguments given to postinstall files for the distribution where the package is being installed. For debian-based distributions, please refer to <https://www.debian.org/doc/debian-policy/ch-maintainerscripts.html>.
-
-## `targets`
-
-This option allows to overwrite or specify configuration options for a specific target distribution. The list of available target distributions are:
-
-* `ubuntu-14.04` - for Ubuntu Trusty (14.04)
-* `ubuntu-12.04` - for Ubuntu Precise (12.04)
-* `debian-7` - for Debian Wheezy (7.4)
-* `centos-6` - for CentOS 6.x
-
-Use the distribution name as a key to the `targets` hash, as follows:
-
-```yaml
-targets:
-  ubuntu-12.04:
-    option1: value1
-    option2: value2
-  debian-7:
-    option1: value1
-    option3: value3
-```
-
-## `buildpack`
-
-At the time of writing, Packager.io officially supports the packaging of Node.js and Ruby apps, through the corresponding buildpacks:
-
-* NODE: https://github.com/heroku/heroku-buildpack-nodejs.git#v58
-* RUBY: https://github.com/pkgr/heroku-buildpack-ruby.git#universal
-
-If you want to use a different buildpack for any reason, you can do so with the `buildpack` configuration option. Though we can not ensure that the resulting package will work. Please do contact us if you run into any issue.
 
 ## `runner`
 

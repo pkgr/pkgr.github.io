@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:200,400">
   <link rel="canonical" href="https://packager.io/help/cli/">
   <!-- <link rel="alternate" type="application/rss+xml" title="Help" href="https://packager.io/blog/feed.xml" /> -->
-  <script src="http://zeptojs.com/zepto.min.js"></script>
+  <script src="/static/js/zepto.min.js"></script>
   <script>jQuery = $;</script>
 </head>
 
@@ -63,7 +63,7 @@
     
     
       <li class="">
-        <a href="/help/register/index.html">Register with your GitHub account</a>
+        <a href="/help/register/">Register with your GitHub account</a>
       </li>
     
     
@@ -73,7 +73,7 @@
     
     
       <li class="">
-        <a href="/help/enable-application-for-packaging/index.html">Enable application for packaging</a>
+        <a href="/help/enable-application-for-packaging/">Enable application for packaging</a>
       </li>
     
     
@@ -83,7 +83,7 @@
     
     
       <li class="">
-        <a href="/help/launch-build/index.html">Launch your first build</a>
+        <a href="/help/launch-build/">Launch your first build</a>
       </li>
     
     
@@ -91,7 +91,7 @@
     
     
       <li class="">
-        <a href="/help/install-configure-run-package/index.html">Install, configure, and run your packaged application</a>
+        <a href="/help/install-configure-run-package/">Install, configure, and run your packaged application</a>
       </li>
     
     
@@ -123,7 +123,7 @@
     
     
       <li class="">
-        <a href="/help/customizing-the-build/index.html">Customizing the build</a>
+        <a href="/help/customizing-the-build/">Customizing the build</a>
       </li>
     
     
@@ -137,13 +137,13 @@
     
     
       <li class="">
-        <a href="/help/procfile/index.html">Process types (Procfile)</a>
+        <a href="/help/procfile/">Process types (Procfile)</a>
       </li>
     
     
     
       <li class="">
-        <a href="/help/distributions/index.html">Supported distributions</a>
+        <a href="/help/distributions/">Supported distributions</a>
       </li>
     
     
@@ -155,25 +155,25 @@
     
     
       <li class="">
-        <a href="/help/releases-and-versions/index.html">Releases & Versions</a>
+        <a href="/help/releases-and-versions/">Releases & Versions</a>
       </li>
     
     
     
       <li class="">
-        <a href="/help/buildpacks/index.html">Buildpacks</a>
+        <a href="/help/buildpacks/">Buildpacks</a>
       </li>
     
     
     
       <li class="">
-        <a href="/help/environment-variables/index.html">Environment variables</a>
+        <a href="/help/environment-variables/">Environment variables</a>
       </li>
     
     
     
       <li class="pure-menu-selected">
-        <a href="/help/cli/index.html">CLI</a>
+        <a href="/help/cli/">CLI</a>
       </li>
     
     
@@ -201,13 +201,13 @@
     
     
       <li class="">
-        <a href="/help/ruby/index.html">Ruby</a>
+        <a href="/help/ruby/">Ruby</a>
       </li>
     
     
     
       <li class="">
-        <a href="/help/nodejs/index.html">NodeJS</a>
+        <a href="/help/nodejs/">NodeJS</a>
       </li>
     
     
@@ -221,7 +221,7 @@
     
     
       <li class="">
-        <a href="/help/golang/index.html">Go</a>
+        <a href="/help/golang/">Go</a>
       </li>
     
     
@@ -243,7 +243,7 @@
     
     
       <li class="">
-        <a href="/help/apt-https/index.html">APT & HTTPS</a>
+        <a href="/help/apt-https/">APT & HTTPS</a>
       </li>
     
     
@@ -251,7 +251,7 @@
     
     
       <li class="">
-        <a href="/help/proxy/index.html">How to expose the app to the world</a>
+        <a href="/help/proxy/">How to expose the app to the world</a>
       </li>
     
     
@@ -450,6 +450,13 @@
 <script>
   $('#main .content').toc({
       showAlways: false
+  });
+
+  var headers = $(".content h2, .content h3");
+  headers.on("mouseover", function(e) {
+    $(this).find("a.anchor .octicon-link").show();
+  }).on("mouseout", function(e) {
+    $(this).find("a.anchor .octicon-link").hide();
   });
 </script>
 

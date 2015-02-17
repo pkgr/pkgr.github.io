@@ -1171,6 +1171,21 @@ a.pure-button-primary {
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
   .content-link {
     background-image: url("/img/link-icon@2x.png"); } }
+a.anchor {
+  margin-left: -20px;
+  position: absolute;
+  color: #777777; }
+
+.content h2, .content h3 {
+  margin-left: -20px;
+  padding-left: 20px; }
+
+.octicon-link {
+  display: none; }
+
+.octicon-link:before {
+  content: '#'; }
+
 /* Solarized Dark 
 
 For use with Jekyll and Pygments

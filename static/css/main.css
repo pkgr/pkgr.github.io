@@ -919,7 +919,7 @@ html, button, input, select, textarea,
 .pure-g [class*="pure-u"] {
   /* Set your content font stack here: */
   font-family: sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 100; }
 
 a {
@@ -1466,6 +1466,59 @@ green     #859900  operators, other keywords
   color: #2aa198; }
 
 /* Literal.Number.Integer.Long */
+/*
+ * jQuery Table of Content Generator for Markdown v1.0
+ *
+ * https://github.com/dafi/tocmd-generator
+ * Examples and documentation at: https://github.com/dafi/tocmd-generator
+ *
+ * Requires: jQuery v1.7+
+ *
+ * Copyright (c) 2013 Davide Ficano
+ *
+ * Dual licensed under the MIT and GPL licenses:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ */
+#toc, .toc, .mw-warning {
+  background-color: #F9F9F9;
+  border: 1px solid #AAAAAA;
+  font-size: 95%;
+  padding: 5px; }
+
+#toc h2, .toc h2 {
+  border: medium none;
+  display: inline;
+  font-size: 100%;
+  font-weight: bold;
+  padding: 0; }
+
+#toc #toctitle, .toc #toctitle, #toc .toctitle, .toc .toctitle {
+  text-align: center; }
+
+#toc ul, .toc ul {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+  text-align: left;
+  padding: 10px 20px; }
+
+#toc ul ul, .toc ul ul {
+  margin: 0 0 0 2em; }
+
+#toc .toctoggle, .toc .toctoggle {
+  font-size: 94%; }
+
+#toc ul li {
+  list-style-type: none;
+  padding-left: 0; }
+
+#toc-container {
+  margin-bottom: 10px;
+  float: right;
+  padding-left: 10px; }
+
 #menu a {
   font-family: 'Raleway', sans-serif;
   font-size: 15px;

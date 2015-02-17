@@ -6,14 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Getting Started</title>
+  <title>Releases & Versions</title>
   <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
 
   <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
   <link rel="stylesheet" href="/static/css/main.css">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:200,400">
-  <link rel="canonical" href="https://packager.io/help/">
+  <link rel="canonical" href="https://packager.io/help/releases-and-versions/">
   <!-- <link rel="alternate" type="application/rss+xml" title="Help" href="https://packager.io/blog/feed.xml" /> -->
   <script src="http://zeptojs.com/zepto.min.js"></script>
   <script>jQuery = $;</script>
@@ -154,7 +154,7 @@
     
     
     
-      <li class="">
+      <li class="pure-menu-selected">
         <a href="/help/releases-and-versions/index.html">Releases & Versions</a>
       </li>
     
@@ -297,27 +297,38 @@
     </div>
     <div class="pure-u-3-4 l-box">
       <div class="header">
-        <h1>Getting Started</h1>
+        <h1>Releases & Versions</h1>
         
       </div>
       <div class="content"> 
         
 
-<p>Packager.io is a service that automatically packages your application as a DEB or RPM package, for a number of <a href="./distributions/">target distributions</a>.</p>
+<h2>
+<a id="releases" class="anchor" href="#releases" aria-hidden="true"><span class="octicon octicon-link"></span></a>Releases</h2>
 
-<p>Currently, you can package applications written in <a href="./ruby/">Ruby</a>, <a href="./nodejs/">NodeJS</a>, or <a href="./golang/">Go</a>.</p>
+<p>Each branch of your repository is considered to be a specific release, and packages built from branch A will be isolated from packages built from branch B. This allows you to provide packages at different degrees of stability.</p>
 
-<p>The process is as follows:</p>
+<div class="alert tip">
+
+<p>You can enable more branches to package in your project settings. You must have administration rights on the repository.</p>
+
+</div>
+
+<p>For instance, you may already have two branches in your repository, let's say <code>master</code> and <code>stable</code>. In <code>master</code> you have the most recent code, not necessarily production ready, while the <code>stable</code> branch only gets new code once it is considered stable enough.</p>
+
+<p>In that case, you can enable both branches in your project settings, and independent packages will be built for both branches whenever new code is pushed. Then, you can use the packages from <code>master</code> to deploy to staging or let adventurous users try out the latest features, while your production servers or clients will use the packages from the <code>stable</code> release to install your application.</p>
+
+<h2>
+<a id="versions" class="anchor" href="#versions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Versions</h2>
+
+<p>Within a Release, packages will be versioned according to:</p>
 
 <ul>
-<li>
-<a href="./register/">register</a> with your GitHub account.</li>
-<li>
-<a href="./enable-application-for-packaging/">enable one of your applications</a> that you want to package.</li>
-<li>every time you push new code to your GitHub repository, a <a href="./launch-build/">build is launched</a> on our servers. You can also manually launch a build from the user interface.</li>
-<li>during the build process, your code is fetched, and runs through a list of <a href="./buildpacks/">buildpacks</a>, which take care of fetching all the dependencies required by your application, and then a DEB or RPM package is generated, and hosted in your own APT or YUM repository.</li>
-<li>you can now log-in on your servers, and <a href="./install-configure-run-package/">install your application</a> with a simple <code>apt-get install</code> or <code>yum install</code>.</li>
+<li>the time at which they have been generated</li>
+<li>a version number, based on the latest git tag reachable from the git commit that has been packaged</li>
 </ul>
+
+<p>If a proper tag can't be reached from the commit being packaged, the version number will be set to <code>0.0.0</code>. So make sure you always push your tags with <code>git push --tags</code>.</p>
 
 
       </div>

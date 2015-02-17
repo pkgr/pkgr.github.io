@@ -6,14 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Getting Started</title>
+  <title>NodeJS</title>
   <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
 
   <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
   <link rel="stylesheet" href="/static/css/main.css">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:200,400">
-  <link rel="canonical" href="https://packager.io/help/">
+  <link rel="canonical" href="https://packager.io/help/nodejs/">
   <!-- <link rel="alternate" type="application/rss+xml" title="Help" href="https://packager.io/blog/feed.xml" /> -->
   <script src="http://zeptojs.com/zepto.min.js"></script>
   <script>jQuery = $;</script>
@@ -206,7 +206,7 @@
     
     
     
-      <li class="">
+      <li class="pure-menu-selected">
         <a href="/help/nodejs/index.html">NodeJS</a>
       </li>
     
@@ -297,26 +297,28 @@
     </div>
     <div class="pure-u-3-4 l-box">
       <div class="header">
-        <h1>Getting Started</h1>
+        <h1>NodeJS</h1>
         
       </div>
       <div class="content"> 
         
 
-<p>Packager.io is a service that automatically packages your application as a DEB or RPM package, for a number of <a href="./distributions/">target distributions</a>.</p>
+<h2>
+<a id="detection" class="anchor" href="#detection" aria-hidden="true"><span class="octicon octicon-link"></span></a>Detection</h2>
 
-<p>Currently, you can package applications written in <a href="./ruby/">Ruby</a>, <a href="./nodejs/">NodeJS</a>, or <a href="./golang/">Go</a>.</p>
+<p>A NodeJS application is detected when it has either a <code>packager.json</code> file or a <code>server.js</code> file in the root directory.</p>
 
-<p>The process is as follows:</p>
+<h2>
+<a id="nodejs-versions" class="anchor" href="#nodejs-versions" aria-hidden="true"><span class="octicon octicon-link"></span></a>NodeJS versions</h2>
+
+<p>All versions supported by Heroku are enabled on Packager.io. Please refer to the <a href="https://devcenter.heroku.com/articles/nodejs-support">Heroku documentation</a> for all the details.</p>
+
+<h2>
+<a id="example-applications" class="anchor" href="#example-applications" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example applications</h2>
 
 <ul>
 <li>
-<a href="./register/">register</a> with your GitHub account.</li>
-<li>
-<a href="./enable-application-for-packaging/">enable one of your applications</a> that you want to package.</li>
-<li>every time you push new code to your GitHub repository, a <a href="./launch-build/">build is launched</a> on our servers. You can also manually launch a build from the user interface.</li>
-<li>during the build process, your code is fetched, and runs through a list of <a href="./buildpacks/">buildpacks</a>, which take care of fetching all the dependencies required by your application, and then a DEB or RPM package is generated, and hosted in your own APT or YUM repository.</li>
-<li>you can now log-in on your servers, and <a href="./install-configure-run-package/">install your application</a> with a simple <code>apt-get install</code> or <code>yum install</code>.</li>
+<a href="https://packager.io/gh/pkgr/statsd">Statsd</a>, the simple daemon for easy stats aggregation.</li>
 </ul>
 
 

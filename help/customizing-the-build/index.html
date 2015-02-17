@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:200,400">
   <link rel="canonical" href="https://packager.io/help/customizing-the-build/">
   <!-- <link rel="alternate" type="application/rss+xml" title="Help" href="https://packager.io/blog/feed.xml" /> -->
+  <script src="http://zeptojs.com/zepto.min.js"></script>
+  <script>jQuery = $;</script>
 </head>
 
 
@@ -27,15 +29,7 @@
       <ul>
         <li><a href="/pricing">Pricing</a></li>
         <li><a href="http://blog.packager.io">Blog</a></li>
-        
-          
-        
-          
-          <li class=" pure-menu-selected "><a href="/getting-started.html">Documentation</a></li>
-          
-        
-          
-        
+        <li><a href="/help">Help</a></li>
       </ul>
     </div>
   </div>
@@ -68,7 +62,9 @@
     
     
     
-    
+      <li class="">
+        <a href="/help/register/index.html">Register with your GitHub account</a>
+      </li>
     
     
     
@@ -77,26 +73,34 @@
     
     
       <li class="">
-        <a href="/register/">Register with your GitHub account</a>
+        <a href="/help/enable-application-for-packaging/index.html">Enable application for packaging</a>
       </li>
+    
+    
+    
+    
     
     
     
       <li class="">
-        <a href="/enable-application-for-packaging/">Enable application for packaging</a>
+        <a href="/help/launch-build/index.html">Launch your first build</a>
       </li>
+    
+    
     
     
     
       <li class="">
-        <a href="/launch-build/">Launch your first build</a>
+        <a href="/help/install-configure-run-package/index.html">Install, configure, and run your packaged application</a>
       </li>
     
     
     
-      <li class="">
-        <a href="/install-configure-run-package/">Install, configure, and run your packaged application</a>
-      </li>
+    
+    
+    
+    
+    
     
     
     </ul>
@@ -106,7 +110,19 @@
     
     
     
-      <li class="">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="pure-menu-selected">
         <a href="/help/customizing-the-build/index.html">Customizing the build</a>
       </li>
     
@@ -120,21 +136,93 @@
     
     
     
+      <li class="">
+        <a href="/help/procfile/index.html">Process types (Procfile)</a>
+      </li>
+    
     
     
       <li class="">
-        <a href="/buildpacks/">Buildpacks</a>
+        <a href="/help/distributions/index.html">Supported distributions</a>
       </li>
     
     
     
     
     
+    
+    
+    
+    
       <li class="">
-        <a href="/procfile/">Process types</a>
+        <a href="/help/releases-and-versions/index.html">Releases & Versions</a>
       </li>
     
     
+    
+      <li class="">
+        <a href="/help/buildpacks/index.html">Buildpacks</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/help/environment-variables/index.html">Environment variables</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/help/cli/index.html">CLI</a>
+      </li>
+    
+    
+    </ul>
+  
+    <a class="pure-menu-heading">languages</a>
+    <ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/help/ruby/index.html">Ruby</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/help/nodejs/index.html">NodeJS</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/help/golang/index.html">Go</a>
+      </li>
     
     
     
@@ -149,8 +237,26 @@
     
     </ul>
   
-    <a class="pure-menu-heading">guides</a>
+    <a class="pure-menu-heading">tips</a>
     <ul>
+    
+    
+    
+      <li class="">
+        <a href="/help/apt-https/index.html">APT & HTTPS</a>
+      </li>
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/help/proxy/index.html">How to expose the app to the world</a>
+      </li>
+    
+    
+    
+    
     
     
     
@@ -199,27 +305,62 @@
       <div class="content"> 
         
 
-<p>You can customize the package your get for your application by adding a <code>.pkgr.yml</code> file at the root of your project repository. This file will be parsed by Packager when a build is run.</p>
+<div class="intro">
+
+<p>To customize the way your package is built, you can add a <code>.pkgr.yml</code> file at the root of your project repository. This file will be parsed by Packager when a build is run.</p>
+
+</div>
 
 <p>You'll find all the available options explained below.</p>
 
-<h3>
-<a id="build_dependencies" class="anchor" href="#build_dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>build_dependencies</code>
-</h3>
+<h2>
+<a id="targets" class="anchor" href="#targets" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>targets</code>
+</h2>
 
-<div class="highlight highlight-html"><pre><span class="nt">&lt;style&gt;</span>
-<span class="c">/*</span>
-<span class="c">When setting the primary font stack, apply it to the Pure grid units along</span>
-<span class="c">with `html`, `button`, `input`, `select`, and `textarea`. Pure Grids use</span>
-<span class="c">specific font stacks to ensure the greatest OS/browser compatibility.</span>
-<span class="c">*/</span>
-<span class="nt">html</span><span class="o">,</span> <span class="nt">button</span><span class="o">,</span> <span class="nt">input</span><span class="o">,</span> <span class="nt">select</span><span class="o">,</span> <span class="nt">textarea</span><span class="o">,</span>
-<span class="nc">.pure-g</span> <span class="o">[</span><span class="nt">class</span> <span class="o">*=</span> <span class="s2">"pure-u"</span><span class="o">]</span> <span class="p">{</span>
-    <span class="c">/* Set your content font stack here: */</span>
-    <span class="k">font-family</span><span class="o">:</span> <span class="n">Georgia</span><span class="o">,</span> <span class="n">Times</span><span class="o">,</span> <span class="s2">"Times New Roman"</span><span class="o">,</span> <span class="k">serif</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nt">&lt;/style&gt;</span>
+<p>Use this option to specify which distributions to target. Each target accepts a YAML hash of options, which will overwrite any other option defined for all distributions.</p>
+
+<div class="alert tip">
+
+<p>The available distributions can be found in <a href="../distributions/">Supported distributions</a>.</p>
+
+<p>By default, packages will be built for <code>ubuntu-14.04</code>, <code>centos-6</code>, and <code>debian-7</code>.</p>
+
+</div>
+
+<p>Use the distribution name as a key to the <code>targets</code> hash, as follows:</p>
+
+<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">dependencies</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">default-dependency-1</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">default-dependency-2</span>
+<span class="l-Scalar-Plain">targets</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">ubuntu-12.04</span><span class="p-Indicator">:</span>
+    <span class="c1"># overwrite dependencies only for ubuntu-12.04</span>
+    <span class="l-Scalar-Plain">dependencies</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">other-dependency-1</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">other-dependency-2</span>
+  <span class="l-Scalar-Plain">ubuntu-14.04</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">debian-7</span><span class="p-Indicator">:</span>
 </pre></div>
+
+<p>If you just want to enable a target without any additional option, you can do as follows:</p>
+
+<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">targets</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">ubuntu-14.04</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">centos-6</span><span class="p-Indicator">:</span>
+</pre></div>
+
+<h2>
+<a id="buildpack" class="anchor" href="#buildpack" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>buildpack</code>
+</h2>
+
+<p>If you want to pass a custom <a href="../buildpacks/">buildpack</a> to package your application, you can do so with the <code>buildpack</code> configuration option. Though we can not ensure that the resulting package will work. Please do contact us if you run into any issue.</p>
+
+<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">buildpack</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">https://github.com/heroku/some-buildpack#branch</span>
+</pre></div>
+
+<h2>
+<a id="build_dependencies" class="anchor" href="#build_dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>build_dependencies</code>
+</h2>
 
 <p>In some cases, some of your app dependencies (e.g. gems with C extensions in the case of Ruby projects) may only be installed if specific development headers are available. To allow for the packaging process to succeed, you must list them with the <code>build_dependencies</code> option. This must be specified as a YAML array.</p>
 
@@ -229,9 +370,9 @@
   <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">libmagickwand-dev</span>
 </pre></div>
 
-<h3>
+<h2>
 <a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>dependencies</code>
-</h3>
+</h2>
 
 <p>If you application requires additional system dependencies to be installed, you can add them with the <code>dependencies</code> configuration option.</p>
 
@@ -243,66 +384,82 @@
   <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">git-core</span>
 </pre></div>
 
-<h3>
-<a id="group" class="anchor" href="#group" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>group</code>
-</h3>
-
-<p>The name of the group under which your app processes will be run. If this group does not exist on the target machine, then it will be automatically created. Defaults to <code>user</code>.</p>
-
-<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">group</span><span class="p-Indicator">:</span> <span class="s">"custom-group-name"</span>
-</pre></div>
-
-<h3>
+<h2>
 <a id="user" class="anchor" href="#user" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>user</code>
-</h3>
+</h2>
 
 <p>The name of the user under which your app processes will be run. If this user does not exist on the target machine, then it will be automatically created. Defaults to your application <code>name</code> (taken from Github, which can be overwritten in the app settings).</p>
 
 <div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">user</span><span class="p-Indicator">:</span> <span class="s">"custom-user-name"</span>
 </pre></div>
 
-<h3>
+<h2>
+<a id="group" class="anchor" href="#group" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>group</code>
+</h2>
+
+<p>The name of the group under which your app processes will be run. If this group does not exist on the target machine, then it will be automatically created. Defaults to <code>user</code>.</p>
+
+<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">group</span><span class="p-Indicator">:</span> <span class="s">"custom-group-name"</span>
+</pre></div>
+
+<h2>
 <a id="before_precompile" class="anchor" href="#before_precompile" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>before_precompile</code>
-</h3>
+</h2>
+
+<div class="alert warning">
+
+<p>This option is deprecated. You should use the <code>before</code> option.</p>
+
+</div>
 
 <p>In the case of complex apps, you might need to do a bit of housekeeping before the packaging process can start. This can include creating files or folders that should be present for running the app (but not necessarily checked into the repository). In that case, you can add a bash script anywhere in your repository that does just that, and reference it with the <code>before_precompile</code> configuration option:</p>
 
 <div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">before_precompile</span><span class="p-Indicator">:</span> <span class="s">"packaging/debian/setup.sh"</span>
 </pre></div>
 
-<h3>
-<a id="before" class="anchor" href="#before" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>before</code>
-</h3>
-
-<p>Replacement for <code>before_precompile</code>, which instead of pointing to a file, must be an array of commands to execute before the packaging process starts. e.g.:</p>
-
-<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">before</span><span class="p-Indicator">:</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">sudo service postgresql start</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">mv some/file to/path</span>
-</pre></div>
-
-<p>Note that <code>before_precompile</code> takes precedence over <code>before</code> if both are specified.</p>
-
-<h3>
+<h2>
 <a id="after_precompile" class="anchor" href="#after_precompile" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>after_precompile</code>
-</h3>
+</h2>
+
+<div class="alert warning">
+
+<p>This option is deprecated. You should use the <code>after</code> option.</p>
+
+</div>
 
 <p>If you need to run a task after the buildpack compilation step is finished, you can provide a path to a file to execute:</p>
 
 <div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">after_precompile</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">path/to/file.sh</span>
 </pre></div>
 
-<h3>
+<h2>
+<a id="before" class="anchor" href="#before" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>before</code>
+</h2>
+
+<p>Replacement for <code>before_precompile</code>, which instead of pointing to a file, must be an array of commands to execute before the packaging process starts. e.g.:</p>
+
+<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">before</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">mv some/file to/path</span>
+</pre></div>
+
+<p>Note that <code>before_precompile</code> takes precedence over <code>before</code> if both are specified.</p>
+
+<h2>
 <a id="after" class="anchor" href="#after" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>after</code>
-</h3>
+</h2>
 
 <p>Replacement for <code>after_precompile</code>, which instead of pointing to a file, must be an array of commands to execute after the buildpack compilation step is finished.</p>
 
 <p>Note that <code>after_precompile</code> takes precedence over <code>after</code> if both are specified.</p>
 
-<h3>
+<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">after</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cp some/file target</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">rm -rf some/dir</span>
+</pre></div>
+
+<h2>
 <a id="before_install" class="anchor" href="#before_install" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>before_install</code>
-</h3>
+</h2>
 
 <p>If you need to execute things just before the package is installed or updated on the user's machine, you can specify a <code>before_install</code> option, the value being the path to a file in your repository (it must have a shebang, e.g. <code>#!/usr/bin/env bash</code>):</p>
 
@@ -311,9 +468,9 @@
 
 <p>The file will be called with the arguments given to preinstall files for the distribution where the package is being installed. For debian-based distributions, please refer to <a href="https://www.debian.org/doc/debian-policy/ch-maintainerscripts.html">https://www.debian.org/doc/debian-policy/ch-maintainerscripts.html</a>.</p>
 
-<h3>
+<h2>
 <a id="after_install" class="anchor" href="#after_install" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>after_install</code>
-</h3>
+</h2>
 
 <p>As with <code>before_install</code>, you can specify that a file be executed just after the package has been installed or updated on the user's machine:</p>
 
@@ -322,52 +479,49 @@
 
 <p>The file will be called with the arguments given to postinstall files for the distribution where the package is being installed. For debian-based distributions, please refer to <a href="https://www.debian.org/doc/debian-policy/ch-maintainerscripts.html">https://www.debian.org/doc/debian-policy/ch-maintainerscripts.html</a>.</p>
 
-<h3>
-<a id="targets" class="anchor" href="#targets" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>targets</code>
-</h3>
+<h2>
+<a id="cli" class="anchor" href="#cli" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>cli</code>
+</h2>
 
-<p>This option allows to overwrite or specify configuration options for a specific target distribution. The list of available target distributions are:</p>
+<p>By default, all packages come with a <a href="../cli/">command-line utility</a> to manage your application. In some cases it may not be needed, for instance if the application you're packaging is itself a command-line utility with its own executable.</p>
 
-<ul>
-<li>
-<code>ubuntu-14.04</code> - for Ubuntu Trusty (14.04)</li>
-<li>
-<code>ubuntu-12.04</code> - for Ubuntu Precise (12.04)</li>
-<li>
-<code>debian-7</code> - for Debian Wheezy (7.4)</li>
-<li>
-<code>centos-6</code> - for CentOS 6.x</li>
-</ul>
+<p>If you don't want the built-in CLI to interfere, you can delegate all calls to your own executable by specifying:</p>
 
-<p>Use the distribution name as a key to the <code>targets</code> hash, as follows:</p>
-
-<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">targets</span><span class="p-Indicator">:</span>
-  <span class="l-Scalar-Plain">ubuntu-12.04</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">option1</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">value1</span>
-    <span class="l-Scalar-Plain">option2</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">value2</span>
-  <span class="l-Scalar-Plain">debian-7</span><span class="p-Indicator">:</span>
-    <span class="l-Scalar-Plain">option1</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">value1</span>
-    <span class="l-Scalar-Plain">option3</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">value3</span>
+<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">cli</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
 </pre></div>
 
-<h3>
-<a id="buildpack" class="anchor" href="#buildpack" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>buildpack</code>
-</h3>
+<h2>
+<a id="env" class="anchor" href="#env" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>env</code>
+</h2>
 
-<p>At the time of writing, Packager.io officially supports the packaging of Node.js and Ruby apps, through the corresponding buildpacks:</p>
+<p>You can set environment variables for use during the packaging process. To do so, use the <code>env</code> configuration option:</p>
 
-<ul>
-<li>NODE: <a href="https://github.com/heroku/heroku-buildpack-nodejs.git#v58">https://github.com/heroku/heroku-buildpack-nodejs.git#v58</a>
-</li>
-<li>RUBY: <a href="https://github.com/pkgr/heroku-buildpack-ruby.git#universal">https://github.com/pkgr/heroku-buildpack-ruby.git#universal</a>
-</li>
-</ul>
+<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">env</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">HELLO=world</span>
+</pre></div>
 
-<p>If you want to use a different buildpack for any reason, you can do so with the <code>buildpack</code> configuration option. Though we can not ensure that the resulting package will work. Please do contact us if you run into any issue.</p>
+<h2>
+<a id="notifications" class="anchor" href="#notifications" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>notifications</code>
+</h2>
 
-<h3>
+<p>Whenever a build fails or is successful on a branch, the default is to send an email notification to the authors and committers of the relevant commits (but only those who have also an account on Packager.io).</p>
+
+<p>If you wish to disable all email notifications, add the following to your .pkgr.yml file:</p>
+
+<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">notifications</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+</pre></div>
+
+<p>If you wish to notify a specific set of people, add them to the list of recipients. Only them will receive notifications:</p>
+
+<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">notifications</span>
+  <span class="l-Scalar-Plain">recipients</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">one@example.com</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">other@example.com</span>
+</pre></div>
+
+<h2>
 <a id="runner" class="anchor" href="#runner" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>runner</code>
-</h3>
+</h2>
 
 <p>By default, Debian 7 packages come with sysv init scripts (the ones in <code>/etc/init.d/</code>), because that distribution does not support upstart scripts by default. If you wish to force the use of upstart scripts, then you can set the <code>runner</code> configuration variable to <code>upstart-1.5</code> in your <code>.pkgr.yml</code> file:</p>
 
@@ -385,11 +539,39 @@
 
 <p>Note that sysvinit scripts do not support the respawning of crashed processes.</p>
 
+<h2>
+<a id="services" class="anchor" href="#services" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>services</code>
+</h2>
+
+<p>Sometimes third-party software is required for the packaging of your app to be successful. For instance, some Rails apps require a database to be present when precompiling assets, or even an instance of redis. If you need to have such services started automatically for you before the packaging process starts, you can easily specify them:</p>
+
+<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">services</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">postgres</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">redis</span>
+</pre></div>
+
+<p>They will be made available on their default port and address, and will automatically be shut down when your build finishes.</p>
+
+<p>Currently, you can specify the following services (please contact us if you need anything specific):</p>
+
+<ul>
+<li>PostgreSQL</li>
+<li>Redis</li>
+</ul>
+
 
       </div>
     </div>
   </div>
 </div>
+
+<script src="/static/js/jquery.toc.js"></script>
+<script>
+  $('#main .content').toc({
+      showAlways: false
+  });
+</script>
+
 
     </div>
 

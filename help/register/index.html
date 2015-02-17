@@ -13,8 +13,10 @@
   <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
   <link rel="stylesheet" href="/static/css/main.css">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:200,400">
-  <link rel="canonical" href="https://packager.io/register/">
+  <link rel="canonical" href="https://packager.io/help/register/">
   <!-- <link rel="alternate" type="application/rss+xml" title="Help" href="https://packager.io/blog/feed.xml" /> -->
+  <script src="http://zeptojs.com/zepto.min.js"></script>
+  <script>jQuery = $;</script>
 </head>
 
 
@@ -27,15 +29,7 @@
       <ul>
         <li><a href="/pricing">Pricing</a></li>
         <li><a href="http://blog.packager.io">Blog</a></li>
-        
-          
-        
-          
-          <li class=" pure-menu-selected "><a href="/getting-started.html">Documentation</a></li>
-          
-        
-          
-        
+        <li><a href="/help">Help</a></li>
       </ul>
     </div>
   </div>
@@ -68,41 +62,63 @@
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
       <li class="pure-menu-selected">
-        <a href="/register/">Register with your GitHub account</a>
+        <a href="/help/register/index.html">Register with your GitHub account</a>
       </li>
+    
+    
+    
+    
     
     
     
       <li class="">
-        <a href="/enable-application-for-packaging/">Enable application for packaging</a>
+        <a href="/help/enable-application-for-packaging/index.html">Enable application for packaging</a>
       </li>
+    
+    
+    
+    
     
     
     
       <li class="">
-        <a href="/launch-build/">Launch your first build</a>
+        <a href="/help/launch-build/index.html">Launch your first build</a>
       </li>
+    
+    
     
     
     
       <li class="">
-        <a href="/install-configure-run-package/">Install, configure, and run your packaged application</a>
+        <a href="/help/install-configure-run-package/index.html">Install, configure, and run your packaged application</a>
       </li>
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     </ul>
   
     <a class="pure-menu-heading">reference</a>
     <ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -120,21 +136,93 @@
     
     
     
+      <li class="">
+        <a href="/help/procfile/index.html">Process types (Procfile)</a>
+      </li>
+    
     
     
       <li class="">
-        <a href="/buildpacks/">Buildpacks</a>
+        <a href="/help/distributions/index.html">Supported distributions</a>
       </li>
     
     
     
     
     
+    
+    
+    
+    
       <li class="">
-        <a href="/procfile/">Process types</a>
+        <a href="/help/releases-and-versions/index.html">Releases & Versions</a>
       </li>
     
     
+    
+      <li class="">
+        <a href="/help/buildpacks/index.html">Buildpacks</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/help/environment-variables/index.html">Environment variables</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/help/cli/index.html">CLI</a>
+      </li>
+    
+    
+    </ul>
+  
+    <a class="pure-menu-heading">languages</a>
+    <ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/help/ruby/index.html">Ruby</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/help/nodejs/index.html">NodeJS</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/help/golang/index.html">Go</a>
+      </li>
     
     
     
@@ -149,8 +237,26 @@
     
     </ul>
   
-    <a class="pure-menu-heading">guides</a>
+    <a class="pure-menu-heading">tips</a>
     <ul>
+    
+    
+    
+      <li class="">
+        <a href="/help/apt-https/index.html">APT & HTTPS</a>
+      </li>
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/help/proxy/index.html">How to expose the app to the world</a>
+      </li>
+    
+    
+    
+    
     
     
     
@@ -218,6 +324,14 @@
     </div>
   </div>
 </div>
+
+<script src="/static/js/jquery.toc.js"></script>
+<script>
+  $('#main .content').toc({
+      showAlways: false
+  });
+</script>
+
 
     </div>
 

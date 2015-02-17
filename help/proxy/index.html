@@ -6,14 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Getting Started</title>
+  <title>How to expose the app to the world</title>
   <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 ">
 
   <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
   <link rel="stylesheet" href="/static/css/main.css">
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:200,400">
-  <link rel="canonical" href="https://packager.io/help/">
+  <link rel="canonical" href="https://packager.io/help/proxy/">
   <!-- <link rel="alternate" type="application/rss+xml" title="Help" href="https://packager.io/blog/feed.xml" /> -->
   <script src="http://zeptojs.com/zepto.min.js"></script>
   <script>jQuery = $;</script>
@@ -250,7 +250,7 @@
     
     
     
-      <li class="">
+      <li class="pure-menu-selected">
         <a href="/help/proxy/index.html">How to expose the app to the world</a>
       </li>
     
@@ -297,27 +297,61 @@
     </div>
     <div class="pure-u-3-4 l-box">
       <div class="header">
-        <h1>Getting Started</h1>
+        <h1>How to expose the app to the world</h1>
         
       </div>
       <div class="content"> 
         
 
-<p>Packager.io is a service that automatically packages your application as a DEB or RPM package, for a number of <a href="./distributions/">target distributions</a>.</p>
+<p>Since your app will start under a non-privileged user, you can't just <code>config:set PORT=80</code>. Therefore, if you want to expose your application to the world on port 80 or 443, you can either use Apache or Nginx to proxy the incoming requests on port 80 to the port on which your app listens:</p>
 
-<p>Currently, you can package applications written in <a href="./ruby/">Ruby</a>, <a href="./nodejs/">NodeJS</a>, or <a href="./golang/">Go</a>.</p>
+<h2>
+<a id="apache-debian" class="anchor" href="#apache-debian" aria-hidden="true"><span class="octicon octicon-link"></span></a>Apache (debian)</h2>
 
-<p>The process is as follows:</p>
+<pre class="command-line">
+<span class="comment"># install apache</span>
+sudo apt-get install -y apache2
+</pre>
 
-<ul>
-<li>
-<a href="./register/">register</a> with your GitHub account.</li>
-<li>
-<a href="./enable-application-for-packaging/">enable one of your applications</a> that you want to package.</li>
-<li>every time you push new code to your GitHub repository, a <a href="./launch-build/">build is launched</a> on our servers. You can also manually launch a build from the user interface.</li>
-<li>during the build process, your code is fetched, and runs through a list of <a href="./buildpacks/">buildpacks</a>, which take care of fetching all the dependencies required by your application, and then a DEB or RPM package is generated, and hosted in your own APT or YUM repository.</li>
-<li>you can now log-in on your servers, and <a href="./install-configure-run-package/">install your application</a> with a simple <code>apt-get install</code> or <code>yum install</code>.</li>
-</ul>
+<pre class="command-line">
+<span class="comment"># enabled required modules</span>
+sudo a2enmod proxy_http
+<span class="comment"># setup apache configuration</span>
+cat &gt; /etc/apache2/sites-available/default 
+  ServerName example.com
+  <location></location>
+    ProxyPass http://localhost:6000/
+  
+
+EOF
+<span class="comment"># restart apache</span>
+sudo service apache2 restart
+</pre>
+
+<h2>
+<a id="nginx-debian" class="anchor" href="#nginx-debian" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nginx (debian)</h2>
+
+<pre class="command-line">
+<span class="comment"># install nginx</span>
+sudo apt-get install -y nginx
+</pre>
+
+<pre class="command-line">
+<span class="comment"># setup nginx configuration</span>
+cat &gt; /etc/nginx/sites-available/default # restart nginx
+sudo service nginx restart
+</pre>
+
+<h2>
+<a id="iptables" class="anchor" href="#iptables" aria-hidden="true"><span class="octicon octicon-link"></span></a>iptables</h2>
+
+<p>You can also quickly achieve the same result by adding a few <code>iptable</code> rules, such as:</p>
+
+<pre><code>iptables -A PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 6000
+iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 80 -j REDIRECT --to-ports 6000
+</code></pre>
+
+<p>Note that iptable rules will not survive a reboot, so the Apache or Nginx approach is recommended.</p>
 
 
       </div>

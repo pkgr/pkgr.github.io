@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>How to expose the app to the world</title>
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+  <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
+  <link rel="stylesheet" href="/static/css/main.css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:200,400">
+  <link rel="canonical" href="https://packager.io/documentation/proxy/">
+  <!-- <link rel="alternate" type="application/rss+xml" title="Help" href="https://packager.io/blog/feed.xml" /> -->
+  <script src="/static/js/zepto.min.js"></script>
+  <script>jQuery = $;</script>
+</head>
+
+
+  <body class="pure-skin-pkgr">
+
+    <div id="menu">
+  <div class="container">
+    <div class="pure-menu pure-menu-open pure-menu-horizontal">
+      <a href="/" class="pure-menu-heading"><img alt="Packager" class="logo" src="/static/img/packager.svg"></a>
+      <ul>
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="http://blog.packager.io">Blog</a></li>
+        <li><a href="/help">Help</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+    <div id="main">
+      <div class="container">
+  <div class="pure-g">
+    <div class="pure-u-1-4 l-box">
+      <div id="sidebar">
+  <div class="pure-menu pure-menu-open">
+  
+    <a class="pure-menu-heading">getting-started</a>
+    <ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/register/">Register with your GitHub account</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/enable-application-for-packaging/">Enable application for packaging</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/launch-build/">Launch your first build</a>
+      </li>
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/install-configure-run-package/">Install, configure, and run your packaged application</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+  
+    <a class="pure-menu-heading">reference</a>
+    <ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/customizing-the-build/">Customizing the build</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/procfile/">Process types (Procfile)</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/distributions/">Supported distributions</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/releases-and-versions/">Releases & Versions</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/buildpacks/">Buildpacks</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/environment-variables/">Environment variables</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/cli/">CLI</a>
+      </li>
+    
+    
+    </ul>
+  
+    <a class="pure-menu-heading">languages</a>
+    <ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/ruby/">Ruby</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/nodejs/">NodeJS</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/golang/">Go</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+  
+    <a class="pure-menu-heading">tips</a>
+    <ul>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/apt-https/">APT & HTTPS</a>
+      </li>
+    
+    
+    
+    
+    
+      <li class="pure-menu-selected">
+        <a href="/documentation/proxy/">How to expose the app to the world</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+  
+  </div>
+</div>
+
+    </div>
+    <div class="pure-u-3-4 l-box">
+      <div class="header">
+        <h1>How to expose the app to the world</h1>
+        
+      </div>
+      <div class="content"> 
+        
+
+<p>Since your app will start under a non-privileged user, you can't just <code>config:set PORT=80</code>. Therefore, if you want to expose your application to the world on port 80 or 443, you can either use Apache or Nginx to proxy the incoming requests on port 80 to the port on which your app listens:</p>
+
+<h2>
+<a id="apache-debian" class="anchor" href="#apache-debian" aria-hidden="true"><span class="octicon octicon-link"></span></a>Apache (debian)</h2>
+
+<pre class="command-line">
+<span class="comment"># install apache</span>
+sudo apt-get install -y apache2
+</pre>
+
+<pre class="command-line">
+<span class="comment"># enabled required modules</span>
+sudo a2enmod proxy_http
+<span class="comment"># setup apache configuration</span>
+cat &gt; /etc/apache2/sites-available/default 
+  ServerName example.com
+  <location></location>
+    ProxyPass http://localhost:6000/
+  
+
+EOF
+<span class="comment"># restart apache</span>
+sudo service apache2 restart
+</pre>
+
+<h2>
+<a id="nginx-debian" class="anchor" href="#nginx-debian" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nginx (debian)</h2>
+
+<pre class="command-line">
+<span class="comment"># install nginx</span>
+sudo apt-get install -y nginx
+</pre>
+
+<pre class="command-line">
+<span class="comment"># setup nginx configuration</span>
+cat &gt; /etc/nginx/sites-available/default # restart nginx
+sudo service nginx restart
+</pre>
+
+<h2>
+<a id="iptables" class="anchor" href="#iptables" aria-hidden="true"><span class="octicon octicon-link"></span></a>iptables</h2>
+
+<p>You can also quickly achieve the same result by adding a few <code>iptable</code> rules, such as:</p>
+
+<pre><code>iptables -A PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 6000
+iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 80 -j REDIRECT --to-ports 6000
+</code></pre>
+
+<p>Note that iptable rules will not survive a reboot, so the Apache or Nginx approach is recommended.</p>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/static/js/jquery.toc.js"></script>
+<script>
+  $('#main .content').toc({
+      showAlways: false
+  });
+
+  var headers = $(".content h2, .content h3");
+  headers.on("mouseover", function(e) {
+    $(this).find("a.anchor .octicon-link").show();
+  }).on("mouseout", function(e) {
+    $(this).find("a.anchor .octicon-link").hide();
+  });
+</script>
+
+
+    </div>
+
+    
+
+  </body>
+
+</html>

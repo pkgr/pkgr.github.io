@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Getting Started</title>
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+  <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
+  <link rel="stylesheet" href="/static/css/main.css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:200,400">
+  <link rel="canonical" href="https://packager.io/documentation/">
+  <!-- <link rel="alternate" type="application/rss+xml" title="Help" href="https://packager.io/blog/feed.xml" /> -->
+  <script src="/static/js/zepto.min.js"></script>
+  <script>jQuery = $;</script>
+</head>
+
+
+  <body class="pure-skin-pkgr">
+
+    <div id="menu">
+  <div class="container">
+    <div class="pure-menu pure-menu-open pure-menu-horizontal">
+      <a href="/" class="pure-menu-heading"><img alt="Packager" class="logo" src="/static/img/packager.svg"></a>
+      <ul>
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="http://blog.packager.io">Blog</a></li>
+        <li><a href="/help">Help</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+    <div id="main">
+      <div class="container">
+  <div class="pure-g">
+    <div class="pure-u-1-4 l-box">
+      <div id="sidebar">
+  <div class="pure-menu pure-menu-open">
+  
+    <a class="pure-menu-heading">getting-started</a>
+    <ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/register/">Register with your GitHub account</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/enable-application-for-packaging/">Enable application for packaging</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/launch-build/">Launch your first build</a>
+      </li>
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/install-configure-run-package/">Install, configure, and run your packaged application</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+  
+    <a class="pure-menu-heading">reference</a>
+    <ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/customizing-the-build/">Customizing the build</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/procfile/">Process types (Procfile)</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/distributions/">Supported distributions</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/releases-and-versions/">Releases & Versions</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/buildpacks/">Buildpacks</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/environment-variables/">Environment variables</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/cli/">CLI</a>
+      </li>
+    
+    
+    </ul>
+  
+    <a class="pure-menu-heading">languages</a>
+    <ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/ruby/">Ruby</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/nodejs/">NodeJS</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/golang/">Go</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+  
+    <a class="pure-menu-heading">tips</a>
+    <ul>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/apt-https/">APT & HTTPS</a>
+      </li>
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/proxy/">How to expose the app to the world</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+  
+  </div>
+</div>
+
+    </div>
+    <div class="pure-u-3-4 l-box">
+      <div class="header">
+        <h1>Getting Started</h1>
+        
+      </div>
+      <div class="content"> 
+        
+
+<p>Packager.io is a service that automatically packages your application as a DEB or RPM package, for a number of <a href="./distributions/">target distributions</a>.</p>
+
+<p>Currently, you can package applications written in <a href="./ruby/">Ruby</a>, <a href="./nodejs/">NodeJS</a>, or <a href="./golang/">Go</a>.</p>
+
+<p>The process is as follows:</p>
+
+<ul>
+<li>
+<a href="./register/">register</a> with your GitHub account.</li>
+<li>
+<a href="./enable-application-for-packaging/">enable one of your applications</a> that you want to package.</li>
+<li>every time you push new code to your GitHub repository, a <a href="./launch-build/">build is launched</a> on our servers. You can also manually launch a build from the user interface.</li>
+<li>during the build process, your code is fetched, and runs through a list of <a href="./buildpacks/">buildpacks</a>, which take care of fetching all the dependencies required by your application, and then a DEB or RPM package is generated, and hosted in your own APT or YUM repository.</li>
+<li>you can now log-in on your servers, and <a href="./install-configure-run-package/">install your application</a> with a simple <code>apt-get install</code> or <code>yum install</code>.</li>
+</ul>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/static/js/jquery.toc.js"></script>
+<script>
+  $('#main .content').toc({
+      showAlways: false
+  });
+
+  var headers = $(".content h2, .content h3");
+  headers.on("mouseover", function(e) {
+    $(this).find("a.anchor .octicon-link").show();
+  }).on("mouseout", function(e) {
+    $(this).find("a.anchor .octicon-link").hide();
+  });
+</script>
+
+
+    </div>
+
+    
+
+  </body>
+
+</html>

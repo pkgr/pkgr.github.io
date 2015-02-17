@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Buildpacks</title>
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+  <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
+  <link rel="stylesheet" href="/static/css/main.css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:200,400">
+  <link rel="canonical" href="https://packager.io/documentation/buildpacks/">
+  <!-- <link rel="alternate" type="application/rss+xml" title="Help" href="https://packager.io/blog/feed.xml" /> -->
+  <script src="/static/js/zepto.min.js"></script>
+  <script>jQuery = $;</script>
+</head>
+
+
+  <body class="pure-skin-pkgr">
+
+    <div id="menu">
+  <div class="container">
+    <div class="pure-menu pure-menu-open pure-menu-horizontal">
+      <a href="/" class="pure-menu-heading"><img alt="Packager" class="logo" src="/static/img/packager.svg"></a>
+      <ul>
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="http://blog.packager.io">Blog</a></li>
+        <li><a href="/help">Help</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+    <div id="main">
+      <div class="container">
+  <div class="pure-g">
+    <div class="pure-u-1-4 l-box">
+      <div id="sidebar">
+  <div class="pure-menu pure-menu-open">
+  
+    <a class="pure-menu-heading">getting-started</a>
+    <ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/register/">Register with your GitHub account</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/enable-application-for-packaging/">Enable application for packaging</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/launch-build/">Launch your first build</a>
+      </li>
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/install-configure-run-package/">Install, configure, and run your packaged application</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+  
+    <a class="pure-menu-heading">reference</a>
+    <ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/customizing-the-build/">Customizing the build</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/procfile/">Process types (Procfile)</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/distributions/">Supported distributions</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/releases-and-versions/">Releases & Versions</a>
+      </li>
+    
+    
+    
+      <li class="pure-menu-selected">
+        <a href="/documentation/buildpacks/">Buildpacks</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/environment-variables/">Environment variables</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/cli/">CLI</a>
+      </li>
+    
+    
+    </ul>
+  
+    <a class="pure-menu-heading">languages</a>
+    <ul>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/ruby/">Ruby</a>
+      </li>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/nodejs/">NodeJS</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/golang/">Go</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+  
+    <a class="pure-menu-heading">tips</a>
+    <ul>
+    
+    
+    
+      <li class="">
+        <a href="/documentation/apt-https/">APT & HTTPS</a>
+      </li>
+    
+    
+    
+    
+    
+      <li class="">
+        <a href="/documentation/proxy/">How to expose the app to the world</a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </ul>
+  
+  </div>
+</div>
+
+    </div>
+    <div class="pure-u-3-4 l-box">
+      <div class="header">
+        <h1>Buildpacks</h1>
+        
+      </div>
+      <div class="content"> 
+        
+
+<h2>
+<a id="whats-a-buildpack" class="anchor" href="#whats-a-buildpack" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's a buildpack?</h2>
+
+<div class="intro">
+
+<p>The concept of buildpack was introduced by Heroku. It is a simple API to define what needs to be done to generate a self-contained version of an application, ready to be deployed. You can find more about the Buildpack API  by following <a href="https://devcenter.heroku.com/articles/buildpack-api">this link</a>.</p>
+
+</div>
+
+<p>A buildpack has three parts:</p>
+
+<ul>
+<li><p>a detection step, where the buildpack attempts to find out whether it can process the application (e.g. the Ruby buildpack checks whether a <code>Gemfile</code> exists, among other things).</p></li>
+<li><p>a compilation step, where the buildpack will download dependencies, launch tasks, and generally make everything needed to "compile" the application into a self-contained artefact.</p></li>
+<li><p>a release step, which is used to set environment variables and various other things needed by the application to run.</p></li>
+</ul>
+
+<h2>
+<a id="officially-supported-buildpacks" class="anchor" href="#officially-supported-buildpacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Officially supported buildpacks</h2>
+
+<table class="pure-table pure-table-horizontal pure-table-striped">
+<thead>
+<tr>
+<th>Language</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ruby</td>
+<td><a href="https://github.com/pkgr/heroku-buildpack-ruby#universal">https://github.com/pkgr/heroku-buildpack-ruby#universal</a></td>
+</tr>
+<tr>
+<td>NodeJS</td>
+<td><a href="https://github.com/heroku/heroku-buildpack-nodejs#v58">https://github.com/heroku/heroku-buildpack-nodejs#v58</a></td>
+</tr>
+<tr>
+<td>Go</td>
+<td><a href="https://github.com/kr/heroku-buildpack-go#master">https://github.com/kr/heroku-buildpack-go#master</a></td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="custom-buildpacks" class="anchor" href="#custom-buildpacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom buildpacks</h2>
+
+<p>One of the benefits of having a well-defined buildpack API is that you can create one yourself, and use it as the source buildpack for your application (see <a href="../customizing-the-build/#buildpack">Customizing the build</a>).</p>
+
+<p>For instance, although C++ applications are not yet officially supported, you could create a buildpack that adds the necessary steps to compile the code and declare the relevant <a href="../procfile">process types</a>.</p>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/static/js/jquery.toc.js"></script>
+<script>
+  $('#main .content').toc({
+      showAlways: false
+  });
+
+  var headers = $(".content h2, .content h3");
+  headers.on("mouseover", function(e) {
+    $(this).find("a.anchor .octicon-link").show();
+  }).on("mouseout", function(e) {
+    $(this).find("a.anchor .octicon-link").hide();
+  });
+</script>
+
+
+    </div>
+
+    
+
+  </body>
+
+</html>

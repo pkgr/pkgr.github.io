@@ -169,6 +169,16 @@ after_install: "packaging/debian/postinstall.sh"
 
 The file will be called with the arguments given to postinstall files for the distribution where the package is being installed. For debian-based distributions, please refer to <https://www.debian.org/doc/debian-policy/ch-maintainerscripts.html>.
 
+## `cli`
+
+By default, all packages come with a [command-line utility][cli] to manage your application. In some cases it may not be needed, for instance if the application you're packaging is itself a command-line utility with its own executable.
+
+If you don't want the built-in CLI to interfere, you can delegate all calls to your own executable by specifying:
+
+```yaml
+cli: false
+```
+
 ## `env`
 
 You can set environment variables for use during the packaging process. To do so, use the `env` configuration option:
@@ -236,3 +246,4 @@ Currently, you can specify the following services (please contact us if you need
 
 [buildpacks]: ../buildpacks/
 [distributions]: ../distributions/
+[cli]: ../cli/

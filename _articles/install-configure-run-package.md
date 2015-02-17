@@ -151,7 +151,7 @@ $ curl localhost:8000
 
 {{#tip}}
 
-See the <a href="../packaging/environment-variables.html">list of all default environment variables</a> set for your application.
+See the [list of all default environment variables][env-variables] set for your application.
 
 {{/tip}}
 
@@ -262,3 +262,4 @@ This concludes the getting started guide. You can find out more about packaging 
 Happy packaging!
 
 [build]: ../launch-build
+[env-variables]: ../environment-variables

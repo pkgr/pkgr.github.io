@@ -31,6 +31,9 @@ Go | https://github.com/kr/heroku-buildpack-go#master
 
 ## Custom buildpacks
 
-One of the benefits of having a well-defined buildpack API is that you can create one yourself, and use it as the source buildpack for your application. For instance, although C++ applications are not yet officially supported, you could create a buildpack that adds the necessary steps to compile the code and declare the relevant [process types][procfile].
+One of the benefits of having a well-defined buildpack API is that you can create one yourself, and use it as the source buildpack for your application (see [Customizing the build][pkgr-yml-buildpack]).
+
+For instance, although C++ applications are not yet officially supported, you could create a buildpack that adds the necessary steps to compile the code and declare the relevant [process types][procfile].
 
 [procfile]: ../procfile
+[pkgr-yml-buildpack]: ../customizing-the-build/#buildpack

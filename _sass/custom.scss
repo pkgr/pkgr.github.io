@@ -38,7 +38,7 @@ html, button, input, select, textarea,
 .pure-g [class *= "pure-u"] {
     /* Set your content font stack here: */
     font-family: sans-serif;
-    font-size: 18px;
+    font-size: $base-font-size;
     font-weight: 100;
 }
 

@@ -169,6 +169,15 @@ after_install: "packaging/debian/postinstall.sh"
 
 The file will be called with the arguments given to postinstall files for the distribution where the package is being installed. For debian-based distributions, please refer to <https://www.debian.org/doc/debian-policy/ch-maintainerscripts.html>.
 
+## `env`
+
+You can set environment variables for use during the packaging process. To do so, use the `env` configuration option:
+
+```yaml
+env:
+  - HELLO=world
+```
+
 ## `notifications`
 
 Whenever a build fails or is successful on a branch, the default is to send an email notification to the authors and committers of the relevant commits (but only those who have also an account on Packager.io).

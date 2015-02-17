@@ -16,8 +16,6 @@ The process is as follows:
 * during the build process, your code is fetched, and runs through a list of [buildpacks][buildpacks], which take care of fetching all the dependencies required by your application, and then a DEB or RPM package is generated, and hosted in your own APT or YUM repository.
 * you can now log-in on your servers, and [install your application][install] with a simple `apt-get install` or `yum install`.
 
-Please click on the Next button to proceed to the next chapter of this guide.
-
 [distributions]: ./distributions/
 [ruby]: ./ruby/
 [nodejs]: ./nodejs/

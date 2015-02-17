@@ -57,7 +57,8 @@
             h1.children().filter('h3').each(function() {
                 ++innerSection;
                 var anchorId = config.anchorPrefix + tocLevel + '-' + tocSection + '-' +  + innerSection;
-                $(this).attr('id', anchorId);
+                var anchorId = $(this).find("a.anchor").attr('id');
+                // $(this).attr('id', anchorId);
                 levelHTML += createLevelHTML(anchorId,
                     tocLevel + 1,
                     tocSection + innerSection,
@@ -68,7 +69,8 @@
                 levelHTML = '<ul>' + levelHTML + '</ul>\n';
             }
             var anchorId = config.anchorPrefix + tocLevel + '-' + tocSection;
-            h1.attr('id', anchorId);
+            var anchorId = h1.find("a.anchor").attr('id');
+            // h1.attr('id', anchorId);
             tocHTML += createLevelHTML(anchorId,
                 tocLevel,
                 tocSection,

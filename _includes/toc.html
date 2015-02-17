@@ -3,4 +3,11 @@
   $('#main .content').toc({
       showAlways: false
   });
+
+  var headers = $(".content h2, .content h3");
+  headers.on("mouseover", function(e) {
+    $(this).find("a.anchor .octicon-link").show();
+  }).on("mouseout", function(e) {
+    $(this).find("a.anchor .octicon-link").hide();
+  });
 </script>

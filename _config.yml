@@ -12,7 +12,7 @@ github_username:  pkgr
 collections:
   articles:
     output: true
-    permalink: /help/:path/index.html
+    permalink: /help/:path/
     categories:
       - getting-started
       - reference

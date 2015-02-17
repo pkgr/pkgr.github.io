@@ -16,7 +16,8 @@ collections:
     categories:
       - getting-started
       - reference
-      - guides
+      - languages
+      - tips
 
 # Build settings
 markdown: HTMLPipeline

@@ -1,7 +1,7 @@
 ---
-layout: doc
-title: Customizing the build (.pkgr.yml)
+title: Customizing the build
 subtitle: Everything you need to know about the .pkgr.yml file
+order: 1
 categories:
   - reference
 ---
@@ -20,16 +20,9 @@ Use this option to specify which distributions to target. Each target accepts a 
 
 {{#tip}}
 
-The list of available target distributions are:
+The available distributions can be found in [Supported distributions][distributions].
 
-* `ubuntu-14.04` - for Ubuntu Trusty (14.04)
-* `ubuntu-12.04` - for Ubuntu Precise (12.04)
-* `debian-7` - for Debian Wheezy (7.4)
-* `centos-6` - for CentOS 6.x
-* `fedora-20` - for Fedora 20
-* `sles-12` - for Suse Linux Enterprise Server 12
-
-By default, package will be built for `ubuntu-14.04`, `centos-6`, and `debian-7`.
+By default, packages will be built for `ubuntu-14.04`, `centos-6`, and `debian-7`.
 
 {{/tip}}
 
@@ -41,7 +34,7 @@ dependencies:
   - default-dependency-2
 targets:
   ubuntu-12.04:
-    # overwrite dependencies obly for ubuntu-12.04
+    # overwrite dependencies only for ubuntu-12.04
     dependencies:
       - other-dependency-1
       - other-dependency-2
@@ -59,7 +52,7 @@ targets:
 
 ## `buildpack`
 
-You can find the list of officially supported buildpacks at [buildpack][buildpacks]. If you want to pass a custom buildpack to package your application, you can do so with the `buildpack` configuration option. Though we can not ensure that the resulting package will work. Please do contact us if you run into any issue.
+If you want to pass a custom [buildpack][buildpacks] to package your application, you can do so with the `buildpack` configuration option. Though we can not ensure that the resulting package will work. Please do contact us if you run into any issue.
 
 ```yaml
 buildpack: https://github.com/heroku/some-buildpack#branch
@@ -176,6 +169,25 @@ after_install: "packaging/debian/postinstall.sh"
 
 The file will be called with the arguments given to postinstall files for the distribution where the package is being installed. For debian-based distributions, please refer to <https://www.debian.org/doc/debian-policy/ch-maintainerscripts.html>.
 
+## `notifications`
+
+Whenever a build fails or is successful on a branch, the default is to send an email notification to the authors and committers of the relevant commits (but only those who have also an account on Packager.io).
+
+If you wish to disable all email notifications, add the following to your .pkgr.yml file:
+
+```yaml
+notifications: false
+```
+
+If you wish to notify a specific set of people, add them to the list of recipients. Only them will receive notifications:
+
+```yaml
+notifications
+  recipients:
+    - one@example.com
+    - other@example.com
+```
+
 ## `runner`
 
 By default, Debian 7 packages come with sysv init scripts (the ones in `/etc/init.d/`), because that distribution does not support upstart scripts by default. If you wish to force the use of upstart scripts, then you can set the `runner` configuration variable to `upstart-1.5` in your `.pkgr.yml` file:
@@ -195,3 +207,23 @@ targets:
 ```
 
 Note that sysvinit scripts do not support the respawning of crashed processes.
+
+## `services`
+
+Sometimes third-party software is required for the packaging of your app to be successful. For instance, some Rails apps require a database to be present when precompiling assets, or even an instance of redis. If you need to have such services started automatically for you before the packaging process starts, you can easily specify them:
+
+```yaml
+services:
+  - postgres
+  - redis
+```
+
+They will be made available on their default port and address, and will automatically be shut down when your build finishes.
+
+Currently, you can specify the following services (please contact us if you need anything specific):
+
+* PostgreSQL
+* Redis
+
+[buildpacks]: ../buildpacks/
+[distributions]: ../distributions/

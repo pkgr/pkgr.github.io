@@ -1,6 +1,6 @@
 ---
 title:          Buildpacks
-permalink: buildpacks/
+order: 5
 categories:
   - reference
 ---
@@ -28,8 +28,6 @@ Language | URL
 Ruby | https://github.com/pkgr/heroku-buildpack-ruby#universal
 NodeJS | https://github.com/heroku/heroku-buildpack-nodejs#v58
 Go | https://github.com/kr/heroku-buildpack-go#master
-
-* Noop: as the name implies, the Noop buildpack does nothing. Use this if you just want to have a repository packaged, without any processing (e.g. static website, or binary artefacts).
 
 ## Custom buildpacks
 

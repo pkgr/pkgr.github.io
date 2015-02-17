@@ -1,7 +1,7 @@
 ---
 layout:   doc
 title:    Getting Started
-permalink: help/
+permalink: documentation/
 ---
 
 Packager.io is a service that automatically packages your application as a DEB or RPM package, for a number of [target distributions][distributions].

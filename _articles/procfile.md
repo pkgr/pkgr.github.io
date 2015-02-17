@@ -21,7 +21,7 @@ Process names can be arbitrary, although it is expected that the `web` process s
 
 ## Launching processes
 
-Any process declared in the `Procfile` can be launched using the [dedicated command line tool][command-line-tool] that comes with each package. For instance, assuming you have declared the following `Procfile`:
+Any process declared in the `Procfile` can be launched using the [dedicated command line tool][cli] that comes with each package. For instance, assuming you have declared the following `Procfile`:
 
 [command-line-tool]: ../command-line-tool
 
@@ -54,3 +54,4 @@ As such, to manage the process, you would then use the `service` utility from yo
 $ sudo service my-app-web stop|start|restart|status
 ```
 
+[cli]: ../cli/

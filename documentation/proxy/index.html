@@ -329,48 +329,54 @@
 <h2>
 <a id="apache-debian" class="anchor" href="#apache-debian" aria-hidden="true"><span class="octicon octicon-link"></span></a>Apache (debian)</h2>
 
-<pre class="command-line">
-<span class="comment"># install apache</span>
+<div class="highlight highlight-bash"><pre><span class="c"># install apache</span>
 sudo apt-get install -y apache2
-</pre>
+</pre></div>
 
-<pre class="command-line">
-<span class="comment"># enabled required modules</span>
+<div class="highlight highlight-bash"><pre><span class="c"># enabled required modules</span>
 sudo a2enmod proxy_http
-<span class="comment"># setup apache configuration</span>
-cat &gt; /etc/apache2/sites-available/default 
-  ServerName example.com
-  <location></location>
-    ProxyPass http://localhost:6000/
-  
-
-EOF
-<span class="comment"># restart apache</span>
+<span class="c"># setup apache configuration</span>
+cat &gt; /etc/apache2/sites-available/default <span class="s">&lt;&lt;EOF</span>
+<span class="s">&lt;VirtualHost *:80&gt;</span>
+<span class="s">  ServerName example.com</span>
+<span class="s">  &lt;Location /&gt;</span>
+<span class="s">    ProxyPass http://localhost:6000/</span>
+<span class="s">  &lt;/Location&gt;</span>
+<span class="s">&lt;/VirtualHost&gt;</span>
+<span class="s">EOF</span>
+<span class="c"># restart apache</span>
 sudo service apache2 restart
-</pre>
+</pre></div>
 
 <h2>
 <a id="nginx-debian" class="anchor" href="#nginx-debian" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nginx (debian)</h2>
 
-<pre class="command-line">
-<span class="comment"># install nginx</span>
+<div class="highlight highlight-bash"><pre><span class="c"># install nginx</span>
 sudo apt-get install -y nginx
-</pre>
+</pre></div>
 
-<pre class="command-line">
-<span class="comment"># setup nginx configuration</span>
-cat &gt; /etc/nginx/sites-available/default # restart nginx
+<div class="highlight highlight-bash"><pre><span class="c"># setup nginx configuration</span>
+cat &gt; /etc/nginx/sites-available/default <span class="s">&lt;&lt;EOF</span>
+<span class="s">server {</span>
+<span class="s">  listen          80;</span>
+<span class="s">  server_name     example.com;</span>
+<span class="s">  location / {</span>
+<span class="s">    proxy_pass      http://localhost:6000;</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+<span class="s">EOF</span>
+<span class="c"># restart nginx</span>
 sudo service nginx restart
-</pre>
+</pre></div>
 
 <h2>
 <a id="iptables" class="anchor" href="#iptables" aria-hidden="true"><span class="octicon octicon-link"></span></a>iptables</h2>
 
 <p>You can also quickly achieve the same result by adding a few <code>iptable</code> rules, such as:</p>
 
-<pre><code>iptables -A PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 6000
-iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 80 -j REDIRECT --to-ports 6000
-</code></pre>
+<div class="highlight highlight-bash"><pre>sudo iptables -A PREROUTING -t nat -p tcp --dport <span class="m">80</span> -j REDIRECT --to-port 6000
+sudo iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport <span class="m">80</span> -j REDIRECT --to-ports 6000
+</pre></div>
 
 <p>Note that iptable rules will not survive a reboot, so the Apache or Nginx approach is recommended.</p>
 

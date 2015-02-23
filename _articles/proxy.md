@@ -8,12 +8,12 @@ Since your app will start under a non-privileged user, you can't just `config:se
 
 ## Apache (debian)
 
-``` command-line
+```bash
 # install apache
 sudo apt-get install -y apache2
 ```
 
-``` command-line
+```bash
 # enabled required modules
 sudo a2enmod proxy_http
 # setup apache configuration
@@ -31,12 +31,12 @@ sudo service apache2 restart
 
 ## Nginx (debian)
 
-``` command-line
+```bash
 # install nginx
 sudo apt-get install -y nginx
 ```
 
-``` command-line
+```bash
 # setup nginx configuration
 cat > /etc/nginx/sites-available/default <<EOF
 server {
@@ -56,7 +56,9 @@ sudo service nginx restart
 
 You can also quickly achieve the same result by adding a few `iptable` rules, such as:
 
-    iptables -A PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 6000
-    iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 80 -j REDIRECT --to-ports 6000
+```bash
+sudo iptables -A PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 6000
+sudo iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 80 -j REDIRECT --to-ports 6000
+```
 
 Note that iptable rules will not survive a reboot, so the Apache or Nginx approach is recommended.

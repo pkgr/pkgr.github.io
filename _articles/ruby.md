@@ -15,7 +15,7 @@ Ruby version | Rubygems version
 --- | ---
 `2.2.0` patchlevel `0` | `2.4.5`
 `2.1.5` patchlevel `273` | `2.2.2`
-`2.0.0` patchlevel `598` | `2.0.14`
+`2.0.0` patchlevel `643` | `2.0.14`
 `1.9.3` patchlevel `551` | `1.8.23.2`
 
 Your version will either default to `2.0.0`, or the version you've specified in your `Gemfile`. For instance:

@@ -1,9 +1,11 @@
 require 'tempfile'
 
+desc "Build documentation locally"
 task :build do
   sh "bundle exec jekyll build"
 end
 
+desc "Release documentation"
 task :release => :build do
   sh "git checkout master"
   Dir.mktmpdir do |dir|

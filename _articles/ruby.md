@@ -13,9 +13,9 @@ A Ruby application is detected when it has a `Gemfile` file in the root director
 
 Ruby version | Rubygems version
 --- | ---
-`2.2.0` patchlevel `0` | `2.4.5`
-`2.1.5` patchlevel `273` | `2.2.2`
-`2.0.0` patchlevel `643` | `2.0.14`
+`2.2.2` patchlevel `95` | `2.4.5`
+`2.1.6` patchlevel `336` | `2.2.3`
+`2.0.0` patchlevel `645` | `2.0.14`
 `1.9.3` patchlevel `551` | `1.8.23.2`
 
 Your version will either default to `2.0.0`, or the version you've specified in your `Gemfile`. For instance:
@@ -24,7 +24,7 @@ Your version will either default to `2.0.0`, or the version you've specified in 
 $ cat Gemfile
 source "https://rubygems.org"
 
-ruby "<em>2.2.0<em>"
+ruby "<em>2.2.2<em>"
 
 # rest of your Gemfile
 ```

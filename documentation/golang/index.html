@@ -332,7 +332,7 @@
 <h2>
 <a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
 
-<p>Your application should have either:</p>
+<p>Your application must have:</p>
 
 <ul>
 <li>a <code>.godir</code> file containing the name of your application. For instance, if the name of your application is <code>example-app</code>:</li>
@@ -343,9 +343,11 @@
 <span class="output"><span># </span>example-app</span>
 </pre>
 
-<ul>
-<li>or, it should use <a href="https://github.com/kr/godep">godep</a> to manage dependencies, and you must include the generated <code>Godep</code> directory in your git repository.</li>
-</ul>
+<p>Note: <a href="https://github.com/kr/godep">Godep</a> is not supported at the moment. If your application is using it, you should add a <code>before</code> step in your <code>.pkgr.yml</code> that removes it before the packaging process starts:</p>
+
+<pre><code>before:
+  - rm -rf Godep/
+</code></pre>
 
 <p>See the <a href="https://github.com/kr/heroku-buildpack-go">Go buildpack documentation</a> for more details.</p>
 

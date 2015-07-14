@@ -11,7 +11,7 @@ A Go application will be detected if it contains a `.go` file.
 
 ## Requirements
 
-Your application should have either:
+Your application must have:
 
 * a `.godir` file containing the name of your application. For instance, if the name of your application is `example-app`:
 
@@ -20,7 +20,12 @@ $ cat .godir
 > example-app
 ```
 
-* or, it should use [godep](https://github.com/kr/godep) to manage dependencies, and you must include the generated `Godep` directory in your git repository.
+Note: [Godep](https://github.com/kr/godep) is not supported at the moment. If your application is using it, you should add a `before` step in your `.pkgr.yml` that removes it before the packaging process starts:
+
+```
+before:
+  - rm -rf Godep/
+```
 
 See the [Go buildpack documentation](https://github.com/kr/heroku-buildpack-go) for more details.
 

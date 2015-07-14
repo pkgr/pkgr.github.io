@@ -17,3 +17,11 @@ Name | Example value | Description
 `HOME` | `/home/example-sinatra-app` | The home directory of your app
 `PORT` | `6000` | The port where the first web process of your application will listen
 `PATH` | `/opt/example-sinatra-app/bin:/opt/example-sinatra-app/vendor/bundle/bin:...:/usr/sbin` | An updated PATH for your application
+
+You can set new variables for your application using the [CLI][cli]:
+
+``` command-line
+$ sudo example-sinatra-app config:set DATABASE_URL=postgres://user:pass@host:port/dbname
+```
+
+[cli]: ../cli/

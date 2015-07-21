@@ -332,22 +332,39 @@
 <h2>
 <a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
 
-<p>Your application should have either:</p>
+<p>The Go buildpack allows you to specify and install your dependencies using one of two methods, <code>godep</code> or <code>go get</code>. The recommended method is to use <code>godep</code>, which saves application dependencies into the git repo so that the application can be reproducibly packaged.</p>
 
-<ul>
-<li>a <code>.godir</code> file containing the name of your application. For instance, if the name of your application is <code>example-app</code>:</li>
-</ul>
+<h3>
+<a id="godep" class="anchor" href="#godep" aria-hidden="true"><span class="octicon octicon-link"></span></a>godep</h3>
+
+<p>To save dependencies using godep, run <code>godep save</code> in your app directory and commit the <code>Godeps</code> directory. When a package will be built, the Go packages in the <code>Godeps</code> directory will be used.</p>
+
+<h3>
+<a id="go-get" class="anchor" href="#go-get" aria-hidden="true"><span class="octicon octicon-link"></span></a>go get</h3>
+
+<p>A <code>.godir</code> file must exist in the root of the repository if you are not using godep. This file must contain the full package path of your application, which will be used to find packages and name the app binary. For example, a <code>.godir</code> file containing the path <code>github.com/crohr/example-go</code> with a main package in the root will result in a binary called <code>example-go</code>.</p>
 
 <pre class="command-line">
 <span class="command">cat .godir</span>
-<span class="output"><span># </span>example-app</span>
+<span class="output"><span># </span>github.com/crohr/example-go</span>
 </pre>
 
-<ul>
-<li>or, it should use <a href="https://github.com/kr/godep">godep</a> to manage dependencies, and you must include the generated <code>Godep</code> directory in your git repository.</li>
-</ul>
-
 <p>See the <a href="https://github.com/kr/heroku-buildpack-go">Go buildpack documentation</a> for more details.</p>
+
+<p>If you need to rename the compiled binary at the end of the process (because it would conflict with the built-in CLI tool that ships with your package), you can do so using an <code>after</code> step:</p>
+
+<pre class="command-line">
+<span class="command">cat .pkgr.yml</span>
+<span class="output"><span># </span>after:</span>
+<span class="output"><span># </span>  - mv bin/example-go bin/web</span>
+</pre>
+
+<p>And then in your <code>Procfile</code>:</p>
+
+<pre class="command-line">
+<span class="command">cat Procfile</span>
+<span class="output"><span># </span>web: bin/web</span>
+</pre>
 
 <h2>
 <a id="example-applications" class="anchor" href="#example-applications" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example applications</h2>

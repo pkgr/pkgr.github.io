@@ -351,7 +351,9 @@
 
 <p>See the <a href="https://github.com/kr/heroku-buildpack-go">Go buildpack documentation</a> for more details.</p>
 
-<p>If you need to rename the compiled binary at the end of the process (because it would conflict with the built-in CLI tool that ships with your package), you can do so using an <code>after</code> step:</p>
+<p><strong>Note:</strong></p>
+
+<p>If you need to rename the compiled binary at the end of the process (because it would conflict with the built-in <a href="../cli">CLI</a> tool that ships with your package), you can do so using an <code>after</code> step in the <code>.pkgr.yml</code> file:</p>
 
 <pre class="command-line">
 <span class="command">cat .pkgr.yml</span>

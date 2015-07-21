@@ -30,7 +30,9 @@ $ cat .godir
 
 See the [Go buildpack documentation](https://github.com/kr/heroku-buildpack-go) for more details.
 
-If you need to rename the compiled binary at the end of the process (because it would conflict with the built-in CLI tool that ships with your package), you can do so using an `after` step:
+**Note:**
+
+If you need to rename the compiled binary at the end of the process (because it would conflict with the built-in [CLI][cli] tool that ships with your package), you can do so using an `after` step in the `.pkgr.yml` file:
 
 ``` command-line
 $ cat .pkgr.yml
@@ -44,6 +46,8 @@ And then in your `Procfile`:
 $ cat Procfile
 > web: bin/web
 ```
+
+[cli]: ../cli
 
 ## Example applications
 

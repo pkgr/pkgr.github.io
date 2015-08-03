@@ -391,10 +391,41 @@
 </pre></div>
 
 <h2>
+<a id="crons" class="anchor" href="#crons" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>crons</code>
+</h2>
+
+<p>Native packages allow you to easily set up cron jobs, to periodically run tasks for your application.</p>
+
+<p>Let's say you need to run the <code>rake crons:task1</code> every hour, here is what you need to do:</p>
+
+<ol>
+<li>
+<p>Create a cron job definition in your repository, for instance in <code>packaging/crons/my-app-task1</code>:</p>
+
+<div class="highlight highlight-bash"><pre><span class="c"># cat packaging/crons/my-app-task1</span>
+<span class="m">0</span> * * * * my-app my-app run rake crons:task1 1&gt;<span class="p">&amp;</span><span class="m">2</span> &gt;&gt; /var/log/my-app/cron-task1.log
+</pre></div>
+
+<p>This cron task wll run as the <code>my-app</code> user (automatically created with your app), and will run the rake task in the context of your application using the <a href="../cli/">cli</a>.</p>
+
+<p>Note: You could replace the first <code>my-app</code> with <code>root</code> if you need to run cron jobs as the <code>root</code> user.</p>
+</li>
+<li>
+<p>Declare your cron in the <code>.pkgr.yml</code> file:</p>
+
+<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">crons</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">packaging/crons/my-app-task1</span>
+</pre></div>
+</li>
+</ol>
+
+<p>Now, upon installing your package, your cron task will automatically be installed in <code>/etc/cron.d/my-app-task1</code>!</p>
+
+<h2>
 <a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>dependencies</code>
 </h2>
 
-<p>If you application requires additional system dependencies to be installed, you can add them with the <code>dependencies</code> configuration option.</p>
+<p>If your application requires additional system dependencies to be installed, you can add them with the <code>dependencies</code> configuration option.</p>
 
 <p>This must be specified as a YAML array. For instance:</p>
 

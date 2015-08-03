@@ -69,9 +69,35 @@ build_dependencies:
   - libmagickwand-dev
 ```
 
+## `crons`
+
+Native packages allow you to easily set up cron jobs, to periodically run tasks for your application.
+
+Let's say you need to run the `rake crons:task1` every hour, here is what you need to do:
+
+1. Create a cron job definition in your repository, for instance in `packaging/crons/my-app-task1`:
+
+  ```bash
+  # cat packaging/crons/my-app-task1
+  0 * * * * my-app my-app run rake crons:task1 1>&2 >> /var/log/my-app/cron-task1.log
+  ```
+
+  This cron task wll run as the `my-app` user (automatically created with your app), and will run the rake task in the context of your application using the [cli][cli].
+
+  Note: You could replace the first `my-app` with `root` if you need to run cron jobs as the `root` user.
+
+2. Declare your cron in the `.pkgr.yml` file:
+
+    ```yaml
+    crons:
+      - packaging/crons/my-app-task1
+    ```
+
+Now, upon installing your package, your cron task will automatically be installed in `/etc/cron.d/my-app-task1`!
+
 ## `dependencies`
 
-If you application requires additional system dependencies to be installed, you can add them with the `dependencies` configuration option.
+If your application requires additional system dependencies to be installed, you can add them with the `dependencies` configuration option.
 
 This must be specified as a YAML array. For instance:
 

@@ -422,6 +422,18 @@
 <p>Now, upon installing your package, your cron task will automatically be installed in <code>/etc/cron.d/my-app-task1</code>!</p>
 
 <h2>
+<a id="default_dependencies" class="anchor" href="#default_dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>default_dependencies</code>
+</h2>
+
+<p>Every package ships with default dependencies for each supported distribution<br>
+(<a href="https://github.com/crohr/pkgr/blob/master/data/dependencies/debian.yml">example</a>).<br>
+If you don't want them to be added to your packages (e.g. it does not make<br>
+sense for Go applications), you can disable them as follows:</p>
+
+<div class="highlight highlight-yaml"><pre><span class="l-Scalar-Plain">default_dependencies</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+</pre></div>
+
+<h2>
 <a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>dependencies</code>
 </h2>
 

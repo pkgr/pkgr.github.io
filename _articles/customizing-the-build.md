@@ -95,6 +95,17 @@ Let's say you need to run the `rake crons:task1` every hour, here is what you ne
 
 Now, upon installing your package, your cron task will automatically be installed in `/etc/cron.d/my-app-task1`!
 
+## `default_dependencies`
+
+Every package ships with default dependencies for each supported distribution
+([example](https://github.com/crohr/pkgr/blob/master/data/dependencies/debian.yml)).
+If you don't want them to be added to your packages (e.g. it does not make
+sense for Go applications), you can disable them as follows:
+
+```yaml
+default_dependencies: false
+```
+
 ## `dependencies`
 
 If your application requires additional system dependencies to be installed, you can add them with the `dependencies` configuration option.

@@ -213,6 +213,12 @@ By default, all packages come with a [command-line utility][cli] to manage your 
 If you don't want the built-in CLI to interfere, you can delegate all calls to your own executable by specifying:
 
 ```yaml
+cli: bin/my-cli
+```
+
+If you don't want any CLI to be installed at all, then put:
+
+```yaml
 cli: false
 ```
 

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Process types (Procfile)</title>
+  <title>Webhooks</title>
   <meta name="description" content="Learn how to package Ruby, NodeJS or Go applications by reading our documentation.
 ">
 
@@ -19,7 +19,7 @@
   <!--<![endif]-->
 
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:200,400">
-  <link rel="canonical" href="https://packager.io/documentation/procfile/">
+  <link rel="canonical" href="https://packager.io/documentation/webhooks/">
   <script src="/static/js/zepto.min.js"></script>
   <script>jQuery = $;</script>
 </head>
@@ -152,7 +152,7 @@
     
     
     
-      <li class="pure-menu-selected">
+      <li class="">
         <a href="/documentation/procfile/">Process types (Procfile)</a>
       </li>
     
@@ -196,7 +196,7 @@
     
     
     
-      <li class="">
+      <li class="pure-menu-selected">
         <a href="/documentation/webhooks/">Webhooks</a>
       </li>
     
@@ -330,61 +330,42 @@
     </div>
     <div class="pure-u-1 l-box pure-u-md-3-4">
       <div class="header">
-        <h1>Process types (Procfile)</h1>
+        <h1>Webhooks</h1>
         
       </div>
       <div class="content"> 
         
 
 <h2>
-<a id="process-types-and-the-procfile" class="anchor" href="#process-types-and-the-procfile" aria-hidden="true"><span class="octicon octicon-link"></span></a>Process types and the Procfile</h2>
+<a id="webhooks" class="anchor" href="#webhooks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Webhooks</h2>
 
-<div class="intro">
+<p>Packager.io supports sending HTTP webhooks to an endpoint of your choice,<br>
+whenever a new package is published. You can specify new webhooks in your<br>
+application settings. Just enter the HTTP(S) URL to which the following JSON<br>
+payload will be <code>POST</code>ed:</p>
 
-<p>Procfiles were introduced by Heroku as a mechanism for declaring what commands are run by your application. See <a href="https://devcenter.heroku.com/articles/procfile">this link</a> for more details.</p>
-
-</div>
-
-<p>Process types are declared in a specific file named <code>Procfile</code>. It comes from the Heroku way of doing things, and is a simple text-based file spercifying a mapping between process names, and how those process are launched.</p>
-
-<p>For instance, most web applications have at least a <code>web</code> process, which is usually a server daemon being able to serve HTTP requests for the application. Applications may also have a <code>worker</code> process, which is used to run background job processors, such as <a href="http://sidekiq.org/">Sidekiq</a> or <a href="https://github.com/resque/resque">Resque</a> in the Ruby world.</p>
-
-<p>Process names can be arbitrary, although it is expected that the <code>web</code> process specifies the main process of your application.</p>
-
-<h2>
-<a id="launching-processes" class="anchor" href="#launching-processes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Launching processes</h2>
-
-<p>Any process declared in the <code>Procfile</code> can be launched using the <a href="../cli/">dedicated command line tool</a> that comes with each package. For instance, assuming you have declared the following <code>Procfile</code>:</p>
-
-<div class="highlight highlight-bash"><pre>web: bundle <span class="nb">exec </span>rails s -p <span class="nv">$PORT</span>
-worker: bundle <span class="nb">exec </span>sidekiq
+<div class="highlight highlight-json"><pre><span class="p">{</span>
+  <span class="nt">"event"</span><span class="p">:</span><span class="s2">"package"</span><span class="p">,</span>
+  <span class="nt">"filename"</span><span class="p">:</span><span class="s2">"openproject_4.2.9-1452166686.e6da738.wheezy_amd64.deb"</span><span class="p">,</span>
+  <span class="nt">"commit"</span><span class="p">:</span><span class="s2">"e6da738e86e616e1046199a7720f5f028e39b96f"</span><span class="p">,</span>
+  <span class="nt">"branch"</span><span class="p">:</span><span class="s2">"release/4.2"</span><span class="p">,</span>
+  <span class="nt">"tag"</span><span class="p">:</span><span class="s2">"4.2.9"</span><span class="p">,</span>
+  <span class="nt">"tagged"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span>
+  <span class="nt">"real_tag"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span>
+  <span class="nt">"distribution"</span><span class="p">:</span><span class="s2">"debian-7"</span><span class="p">,</span>
+  <span class="nt">"package_url"</span><span class="p">:</span><span class="s2">"https://pkgr-production-deb.s3.amazonaws.com/gh/opf/openproject/pool/o/op/openproject_4.2.9-1452166686.e6da738.wheezy_amd64.deb?AWSAccessKeyId=AKIAJFGZVGZONQB4NGVA\u0026Expires=1455913612\u0026Signature=C5tGwhN5MtL37GQKbLPaP7RXf%2FM%3D"</span><span class="p">,</span>
+  <span class="nt">"upstream_url"</span><span class="p">:</span><span class="s2">"https://github.com/opf/openproject/commit/e6da738e86e616e1046199a7720f5f028e39b96f"</span><span class="p">,</span>
+  <span class="nt">"build_url"</span><span class="p">:</span><span class="s2">"https://packager.io/gh/opf/openproject/build_runs/1717"</span>
+<span class="p">}</span>
 </pre></div>
 
-<p>You would be able to launch any of the <code>web</code> or <code>worker</code> processes in two way:</p>
+<p>Only the <code>package</code> event type is supported for the time being.</p>
 
-<h3>
-<a id="1-as-a-foreground-process" class="anchor" href="#1-as-a-foreground-process" aria-hidden="true"><span class="octicon octicon-link"></span></a>1) As a foreground process</h3>
+<p>Note that the <code>package_url</code> is a signed S3 URL, which has an expiration date of<br>
++1month. This may be reduced in the future, so do not wait too long before<br>
+downloding the package if you need it.</p>
 
-<pre class="command-line">
-<span class="command">sudo my-app run web</span>
-</pre>
-
-<p>To quit the process, you would hit CTRL-C.</p>
-
-<h3>
-<a id="2-as-a-daemonized-process" class="anchor" href="#2-as-a-daemonized-process" aria-hidden="true"><span class="octicon octicon-link"></span></a>2) As a daemonized process</h3>
-
-<pre class="command-line">
-<span class="command">sudo my-app scale web=1</span>
-</pre>
-
-<p>Using the <code>scale</code> command will register the process with your init system.</p>
-
-<p>As such, to manage the process, you would then use the <code>service</code> utility from your system:</p>
-
-<pre class="command-line">
-<span class="command">sudo service my-app-web stop|start|restart|status</span>
-</pre>
+<p>Webhook requests have a timeout of 10 seconds.</p>
 
 
       </div>

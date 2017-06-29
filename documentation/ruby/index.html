@@ -339,10 +339,28 @@
 <h2>
 <a id="detection" class="anchor" href="#detection" aria-hidden="true"><span class="octicon octicon-link"></span></a>Detection</h2>
 
-<p>A Ruby application is detected when it has a <code>Gemfile</code> file in the root directory. If your application has no dependencies, it should include an empty <code>Gemfile</code> file.</p>
+<p>A Ruby application is detected when it has a <code>Gemfile</code> file in the root<br>
+directory. If your application has no dependencies, it should include an empty<br>
+<code>Gemfile</code> file.</p>
 
 <h2>
 <a id="mri-ruby-versions" class="anchor" href="#mri-ruby-versions" aria-hidden="true"><span class="octicon octicon-link"></span></a>MRI Ruby versions</h2>
+
+<p>All MRI Ruby versions 1.9+ and 2.+ are supported. Newer versions are<br>
+automatically compiled on-demand if you ask for them.</p>
+
+<p>Your version will either default to <code>2.3.4</code>, or the version you've specified in your <code>Gemfile</code>. For instance:</p>
+
+<pre class="command-line">
+<span class="command">cat Gemfile</span>
+source "https://rubygems.org"
+
+ruby "<em>2.3.0<em>"
+
+<span class="comment"># rest of your Gemfile</span>
+</em></em></pre>
+
+<p>The most recent versions we officially support are as follow:</p>
 
 <table class="pure-table pure-table-horizontal pure-table-striped">
 <thead>
@@ -354,118 +372,31 @@
 <tbody>
 <tr>
 <td>
-<code>2.3.1</code> patchlevel <code>112</code>
+<code>2.4.1</code> patchlevel <code>111</code>
 </td>
-<td><code>2.5.1</code></td>
+<td><code>2.6.11</code></td>
 </tr>
 <tr>
 <td>
-<code>2.2.4</code> patchlevel <code>230</code>
+<code>2.3.4</code> patchlevel <code>301</code>
 </td>
-<td><code>2.4.5.1</code></td>
+<td><code>2.5.2</code></td>
 </tr>
 <tr>
 <td>
-<code>2.1.8</code> patchlevel <code>440</code>
+<code>2.2.7</code> patchlevel <code>470</code>
 </td>
-<td><code>2.2.5</code></td>
-</tr>
-<tr>
-<td>
-<code>2.0.0</code> patchlevel <code>648</code>
-</td>
-<td><code>2.0.14.1</code></td>
-</tr>
-<tr>
-<td>
-<code>1.9.3</code> patchlevel <code>551</code>
-</td>
-<td><code>1.8.23.2</code></td>
+<td><code>2.4.5.2</code></td>
 </tr>
 </tbody>
 </table>
 
-<p>Your version will either default to <code>2.0.0</code>, or the version you've specified in your <code>Gemfile</code>. For instance:</p>
-
-<pre class="command-line">
-<span class="command">cat Gemfile</span>
-source "https://rubygems.org"
-
-ruby "<em>2.3.0<em>"
-
-<span class="comment"># rest of your Gemfile</span>
-</em></em></pre>
+<p>Generally, you should follow the guidelines outlined in this <a href="https://devcenter.heroku.com/articles/ruby-support#ruby-versions">Heroku</a> article.</p>
 
 <h2>
 <a id="jruby-versions" class="anchor" href="#jruby-versions" aria-hidden="true"><span class="octicon octicon-link"></span></a>JRuby versions</h2>
 
-<table class="pure-table pure-table-horizontal pure-table-striped">
-<thead>
-<tr>
-<th>Ruby version</th>
-<th>JRuby version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>2.0.0</code></td>
-<td><code>1.7.11</code></td>
-</tr>
-<tr>
-<td><code>1.9.3</code></td>
-<td><code>1.7.11</code></td>
-</tr>
-<tr>
-<td><code>2.0.0</code></td>
-<td><code>1.7.10</code></td>
-</tr>
-<tr>
-<td><code>1.9.3</code></td>
-<td><code>1.7.10</code></td>
-</tr>
-<tr>
-<td><code>2.0.0</code></td>
-<td><code>1.7.9</code></td>
-</tr>
-<tr>
-<td><code>1.9.3</code></td>
-<td><code>1.7.9</code></td>
-</tr>
-<tr>
-<td><code>2.0.0</code></td>
-<td><code>1.7.8</code></td>
-</tr>
-<tr>
-<td><code>1.9.3</code></td>
-<td><code>1.7.8</code></td>
-</tr>
-<tr>
-<td><code>1.9.3</code></td>
-<td><code>1.7.6</code></td>
-</tr>
-<tr>
-<td><code>2.0.0</code></td>
-<td><code>1.7.6</code></td>
-</tr>
-<tr>
-<td><code>2.0.0</code></td>
-<td><code>1.7.5</code></td>
-</tr>
-<tr>
-<td><code>1.9.3</code></td>
-<td><code>1.7.5</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>For specifying non MRI ruby engines, you'll need to use the <code>:engine</code> and <code>:engine_version</code> options. You can specify JRuby by using the following line:</p>
-
-<pre class="command-line">
-<span class="command">cat Gemfile</span>
-source "https://rubygems.org"
-
-ruby "<em>1.9.3</em>", :engine =&gt; "<em>jruby</em>", :engine_version =&gt; "<em>1.7.8</em>"
-</pre>
+<p>JRuby versions are no longer supported at the moment.</p>
 
 <h2>
 <a id="example-applications" class="anchor" href="#example-applications" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example applications</h2>

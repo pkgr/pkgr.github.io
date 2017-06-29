@@ -7,19 +7,16 @@ categories:
 
 ## Detection
 
-A Ruby application is detected when it has a `Gemfile` file in the root directory. If your application has no dependencies, it should include an empty `Gemfile` file.
+A Ruby application is detected when it has a `Gemfile` file in the root
+directory. If your application has no dependencies, it should include an empty
+`Gemfile` file.
 
 ## MRI Ruby versions
 
-Ruby version | Rubygems version
---- | ---
-`2.3.1` patchlevel `112` | `2.5.1`
-`2.2.4` patchlevel `230` | `2.4.5.1`
-`2.1.8` patchlevel `440` | `2.2.5`
-`2.0.0` patchlevel `648` | `2.0.14.1`
-`1.9.3` patchlevel `551` | `1.8.23.2`
+All MRI Ruby versions 1.9+ and 2.+ are supported. Newer versions are
+automatically compiled on-demand if you ask for them.
 
-Your version will either default to `2.0.0`, or the version you've specified in your `Gemfile`. For instance:
+Your version will either default to `2.3.4`, or the version you've specified in your `Gemfile`. For instance:
 
 ``` command-line
 $ cat Gemfile
@@ -30,31 +27,19 @@ ruby "<em>2.3.0<em>"
 # rest of your Gemfile
 ```
 
+The most recent versions we officially support are as follow:
+
+Ruby version | Rubygems version
+--- | ---
+`2.4.1` patchlevel `111` | `2.6.11`
+`2.3.4` patchlevel `301` | `2.5.2`
+`2.2.7` patchlevel `470` | `2.4.5.2`
+
+Generally, you should follow the guidelines outlined in this [Heroku](https://devcenter.heroku.com/articles/ruby-support#ruby-versions) article.
+
 ## JRuby versions
 
-Ruby version | JRuby version
---- | ---
-`2.0.0` | `1.7.11`
-`1.9.3` | `1.7.11`
-`2.0.0` | `1.7.10`
-`1.9.3` | `1.7.10`
-`2.0.0` | `1.7.9`
-`1.9.3` | `1.7.9`
-`2.0.0` | `1.7.8`
-`1.9.3` | `1.7.8`
-`1.9.3` | `1.7.6`
-`2.0.0` | `1.7.6`
-`2.0.0` | `1.7.5`
-`1.9.3` | `1.7.5`
-
-For specifying non MRI ruby engines, you'll need to use the `:engine` and `:engine_version` options. You can specify JRuby by using the following line:
-
-``` command-line
-$ cat Gemfile
-source "https://rubygems.org"
-
-ruby "<em>1.9.3</em>", :engine => "<em>jruby</em>", :engine_version => "<em>1.7.8</em>"
-```
+JRuby versions are no longer supported at the moment.
 
 ## Example applications
 
